@@ -1,0 +1,367 @@
+.board-rs-addtask-btn {
+    display: none;
+    z-index: -1;
+    position: absolute;
+    right: 40px;
+    top: 150px;
+    background-image: url('/assets/img/plus-dark.png');
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 40px;
+}
+
+.board-rs-addtask-btn:hover {
+    background-image: url('/assets/img/plus-lightblue.png');
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.board-closing-rs {
+    display: none;
+    cursor: pointer;
+}
+
+.task-overlay-btns-rs {
+    display: none;
+}
+
+.board-plus-image-rs {
+    background-image: url('../img/plus-button.svg');
+    height: 30px;
+    width: 30px;
+    display: none;
+}
+
+.board-plus-image-rs:hover {
+    background-image: url('../img/plus-button-blue.svg');
+    cursor: pointer;
+}
+
+
+
+@media(max-width: 1400px) {
+    .board-main {
+        padding-left: 250px;
+    }
+}
+
+@media(max-width: 1320px) {
+    .board-tasks {
+        width: 230px;
+    }
+
+    .drag-and-drop-colums {
+        width: 230px;
+    }
+}
+
+@media(max-width: 1240px) {
+    .board-main {
+        padding-right: 10px;
+        padding-left: 235px;
+    }
+
+    .board-headline {
+        font-size: 45px;
+    }
+
+    .board-tasks {
+        width: 200px;
+        font-size: 16px;
+    }
+
+    .board-plus-image {
+        width: 25px;
+        height: 25px;
+        background-size: contain;
+    }
+
+    .drag-and-drop-colums {
+        width: 200px;
+    }
+}
+
+@media(max-width: 1050px) {
+    .board-tasks {
+        width: 185px;
+    }
+
+    .drag-and-drop-colums {
+        width: 185px;
+    }
+}
+
+@media(max-width: 1000px) {
+    .drag-and-drop-main {
+        flex-direction: column;
+        height: 84%;
+    }
+
+    .board-rs-helper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .drag-and-drop-colums {
+        width: 350px;
+        min-height: 50px;
+        max-height: 300px;
+        overflow: auto;
+    }
+
+    .drag-and-drop-colums::-webkit-scrollbar {
+        display: none;
+    }
+
+    .board-tasks {
+        width: 350px;
+        font-size: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .board-plus-image {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media(max-width: 800px) {
+    .kanban-board {
+        display: flex;
+    }
+
+    .board-main {
+        padding-left: 20px;
+    }
+
+    .board-headline-section {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: unset;
+        margin-top: 20px;
+        gap: 20px;
+    }
+
+    .board-add-task-btn {
+        display: none;
+    }
+
+    .board-search {
+        width: 260px;
+    }
+
+    .drag-and-drop-main {
+        height: calc(100% - 255px);
+        margin-top: 10px;
+    }
+
+    .board-rs-addtask-btn {
+        display: flex;
+    }
+
+    .board-plus-image {
+        display: none;
+    }
+
+    .board-plus-image-rs {
+        display: flex;
+    }
+
+    .frame-for-task-overlay {
+        border-radius: 0px;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        background: #F6F7F8;
+        gap: 40px;
+    }
+
+    .task-overlay-category {
+        margin-top: 0px;
+    }
+
+    .task-overlay-delete {
+        display: none;
+    }
+
+    .task-overlay-edit {
+        display: none;
+    }
+
+    .task-overlay-btns {
+        height: fit-content;
+    }
+
+    .task-overlay-btns-rs {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+    }
+
+    .board-delete-btn-rs {
+        height: 40px;
+        width: 40px;
+        cursor: pointer;
+    }
+
+    .board-edit-btn-rs {
+        cursor: pointer;
+    }
+
+    .closing {
+        display: none;
+    }
+
+    .board-closing-rs {
+        display: flex;
+        height: 25px;
+        width: 25px;
+    }
+}
+
+@media(max-width: 600px) {
+    .task-overlay-title {
+        font-size: 40px;
+    }
+
+    .task-overlay-description {
+        font-size: 18px;
+    }
+
+    .task-overlay-bold-text {
+        font-size: 18px;
+    }
+
+    .task-overlay-text {
+        font-size: 18px;
+    }
+
+    .task-overlay-input-title {
+        font-size: 18px;
+        width: 350px;
+    }
+
+    .task-overlay-textarea {
+        width: 350px;
+        font-size: 18px;
+    }
+
+    .task-overlay-prio-main {
+        width: 350px;
+    }
+
+    .add-task-priobox {
+        width: 110px !important;
+    }
+}
+
+@media(max-width: 400px) {
+    .board-main {
+        padding-left: 10px;
+    }
+
+    .board-search {
+        width: 255px;
+    }
+
+    .board-headline {
+        font-size: 40px;
+    }
+
+    .board-tasks {
+        width: 255px;
+    }
+
+    .drag-and-drop-main {
+        height: calc(100% - 250px);
+    }
+
+    .drag-and-drop-colums {
+        width: 255px;
+    }
+
+    .frame-for-task-overlay {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .task-overlay-title {
+        font-size: 30px;
+    }
+
+    .task-overlay-input-title {
+        width: 255px;
+        font-size: 16px;
+    }
+
+    .task-overlay-textarea {
+        width: 255px;
+        padding: 10px 10px;
+    }
+
+    .task-overlay-prio-main {
+        width: 255px;
+    }
+
+    .add-task-priobox {
+        font-size: 16px !important;
+        gap: 5px !important;
+        width: 82px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (max-width: 1000px) and (max-height: 800px) {
+    .drag-and-drop-main {
+        height: 79%;
+    }
+}
+
+@media(max-height: 700px) {
+    .drag-and-drop-main {
+        height: 77%;
+        margin-top: 5px;
+    }
+
+    .board-headline-section {
+        margin-top: 10px;
+    }
+
+    .board-headline {
+        font-size: 35px;
+    }
+}
+
+
+@media only screen and (max-width: 800px) and (max-height: 800px) {
+    .board-main {
+        padding-top: 80px;
+    }
+
+    .board-headline {
+        font-size: 35px;
+    }
+
+    .board-headline-section {
+        gap: 10px;
+    }
+
+    .board-rs-addtask-btn {
+        top: 125px;
+    }
+
+    .drag-and-drop-main {
+        height: 64%;
+    }
+}
+
+@media only screen and (max-width: 800px) and (max-height: 700px) {
+    .drag-and-drop-main {
+        height: 60%;
+    }
+}

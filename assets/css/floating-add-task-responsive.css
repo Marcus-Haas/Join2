@@ -1,0 +1,153 @@
+@media(max-width: 1500px) {
+    .floating-addTask {
+        left: 20%;
+    }
+
+    .task-added-message-floating {
+        left: 680px;
+    }
+
+    .task-added-message-floating-board {
+        left: 680px;
+    }
+}
+
+@media(max-width: 1400px) {
+    .floating-addTask {
+        left: 15%;
+    }
+
+    .task-added-message-floating {
+        left: 580px;
+    }
+
+    .task-added-message-floating-board {
+        left: 580px;
+    }
+}
+
+@media(max-width: 1300px) {
+    .floating-addTask {
+        left: 10%;
+    }
+
+    .task-added-message-floating {
+        left: 500px;
+    }
+
+    .task-added-message-floating-board {
+        left: 500px;
+    }
+}
+
+@media(max-width: 1200px) {
+    .floating-addTask {
+        width: 900px;
+        height: 750px;
+    }
+
+    .close-floating-task {
+        position: unset;
+    }
+
+    .add-task-btns {
+        margin-top: 0px;
+    }
+
+    .task-added-message-floating {
+        bottom: 410px;
+        left: 450px;
+    }
+
+    .task-added-message-floating-board {
+        bottom: 410px;
+        left: 450px;
+    }
+}
+
+@media(max-width: 1100px) {
+    .floating-addTask {
+        left: 7%;
+    }
+
+    .task-added-message-floating {
+        left: 410px;
+    }
+
+    .task-added-message-floating-board {
+        left: 410px;
+    }
+}
+
+@media(max-width: 1000px) {
+    .floating-addTask {
+        width: 750px;
+    }
+
+    .helper {
+        justify-content: center;
+    }
+
+    .add-task-leftside {
+        width: 300px;
+    }
+
+    .add-task-rightside {
+        width: 300px;
+    }
+
+    .add-task-priobox {
+        width: 95px;
+        font-size: 16px;
+    }
+
+    .add-task-btns {
+        width: 690px;
+    }
+
+    .task-added-message-floating {
+        left: 320px;
+    }
+
+    .task-added-message-floating-board {
+        left: 320px;
+    }
+}
+
+@media(max-width: 850px) {
+    .floating-addTask {
+        left: 4%;
+    }
+}
+
+@media (max-width: 800px) {
+    .floating-addTask {
+        display: none;
+    }
+}
+
+@media(max-height: 900px) {
+    .floating-addTask {
+        height: 590px;
+    }
+
+    .helper {
+        margin-top: 20px;
+    }
+
+    .add-task-leftside {
+        height: 400px;
+    }
+
+    .add-task-vector {
+        height: 400px;
+    }
+
+    .add-task-rightside {
+        gap: 15px;
+    }
+
+    .add-task-btns {
+        margin-top: 0px;
+    }
+}

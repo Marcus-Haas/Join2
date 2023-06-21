@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="shortcut icon" href="assets/img/join-logo.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/index-responsive.css">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="assets/css/summary.css">
+
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/mini_backend.js"></script>
+    <script src="assets/js/register.js"></script>
+    <script src="assets/js/summary.js"></script>
+    <script>setURL('https://marcus-haas.developerakademie.net/smallest_backend_ever');</script>
+
+</head>
+
+<body onload="init()">
+
+    <div class="main">
+        <div class="login-logo">
+            <img class="login-image" src="assets/img/join-logo.svg">
+        </div>
+
+        <div class="log-register" id="log-register">
+            <p class="log-register-text">Not a Join user?</p>
+            <button class="log-register-btn" onclick="showSignUpBox()">Sign up</button>
+        </div>
+
+        <div class="log-mainbox" id="log-mainbox">
+            <div class="log-headline-frame">
+                <p class="log-headline">Log in</p>
+                <div class="log-vector"></div>
+            </div>
+            <div class="log-email-frame">
+                <input class="log-input-style email-image" id="email" type="email" placeholder="Email" size="10"
+                    required>
+                <div class="lock-div-for-image">
+                    <input class="log-input-style" id="password" type="password" placeholder="Password" required>
+                    <img class="lock" id="lock" src="assets/img/lock.svg" onclick="showPassword()"
+                        title="show password">
+                    <img class="unlock d-none" id="unlock" src="assets/img/unlock.png" onclick="hidePassword()"
+                        title="hide password">
+                </div>
+                <div class="wrong-password d-none" id="wrong-password">Wrong email or password</div>
+            </div>
+            <div class="remember-forgot-frame">
+                <div class="check-div">
+                    <input class="input-square" type="checkbox" style="cursor: pointer;">
+                    <p class="remember-text">Remember me</p>
+                </div>
+                <p class="forgot-text" onclick="openForgotPasswordBox()">Forgot my password</p>
+            </div>
+            <div class="login-btn-frame">
+                <button class="login-btn" onclick="login()">Log in</button>
+                <button class="guest-login-btn" onclick="guestLogin()">Guest Log in</button>
+            </div>
+        </div>
+
+        <div class="sign-up-box" id="sign-up-box">
+            <div class="signup-headline-frame">
+                <p class="signup-headline">Sign up</p>
+                <div class="log-vector"></div>
+            </div>
+            <form class="register-form" onsubmit="addNewUser(); return false;">
+                <div class="log-email-frame">
+                    <input class="log-input-style name-image" id="new-name" type="text" placeholder="Name" required>
+                    <input class="log-input-style email-image" id="new-email" type="email" placeholder="Email" required>
+                    <div class="sign-up-warning d-none" id="sign-up-warning">This email already exist!</div>
+                    <div class="lock-div-for-image">
+                        <input class="log-input-style" id="new-password" type="password" placeholder="Password"
+                            required>
+                        <img class="lock" id="sign-lock" src="assets/img/lock.svg" onclick="showPasswordSignUp()"
+                            title="show password">
+                        <img class="unlock d-none" id="sign-unlock" src="assets/img/unlock.png"
+                            onclick="hidePasswordSignUp()" title="hide password">
+                    </div>
+                </div>
+                <button class="sign-up-btn">Sign up</button>
+            </form>
+            <div class="back-to-log" onclick="backToLogin()">
+                <img src="assets/img/arrow-left-blue.svg">
+            </div>
+        </div>
+
+        <div class="forgot-pw-box" id="forgot-pw-box">
+            <div class="forgot-pw-headline-frame">
+                <p class="pw-headline">I forgot my password</p>
+                <div class="log-vector"></div>
+            </div>
+            <p class="instruction-text">Don't worry! We will send you an email with the instructions to<br>reset your
+                password.</p>
+            <input class="log-input-style email-image" type="email" placeholder="Email" required>
+            <button class="send-email-btn" onclick="showEndOfDemoPopup()">Send me the email</button>
+            <div class="back-to-log" onclick="backToLogin()">
+                <img src="assets/img/arrow-left-blue.svg">
+            </div>
+        </div>
+
+        <div class="signup-msg d-none" id="signup-msg">
+            <span>Sign up succesful</span>
+        </div>
+
+        <div class="demo-popup d-none" id="demo-popup">
+            <div class="demo-frame end-text">
+                <div class="close-demo" onclick="closeEndOfDemoPopup()">X</div>
+                <span>An dieser Stelle endet die Demo.</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+.header-logo-rs {
+    display: none;
+}
+
+.header-category-rs {
+    display: none;
+}
+
+@media(max-width: 1200px),
+(max-height: 850px) {
+    header {
+        padding: 0px 36px 0px 300px;
+    }
+}
+
+@media(max-width: 950px) {
+    header {
+        padding: 0px 36px 0px 270px;
+    }
+}
+
+@media(max-width: 800px) {
+    header {
+        padding: 0px 30px;
+    }
+
+    .header-user-frame {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .header-text {
+        display: none;
+    }
+
+    .header-help {
+        display: none;
+    }
+
+    .header-logo-rs {
+        display: flex;
+        height: 50px;
+    }
+
+    .logout-btn {
+        flex-direction: column;
+        height: 100px;
+        justify-content: space-evenly;
+    }
+
+    .header-links-rs {
+        text-decoration: none;
+        color: #CDCDCD;
+    }
+
+    .header-category-rs {
+        display: flex;
+    }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary</title>
+
+    <link rel="shortcut icon" href="assets/img/join-logo.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="assets/css/summary.css">
+    <link rel="stylesheet" href="assets/css/summary-responsive.css">
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/mini_backend.js"></script>
+    <script src="assets/js/register.js"></script>
+    <script src="assets/js/addTask.js"></script>
+    <script>setURL('https://marcus-haas.developerakademie.net/smallest_backend_ever');</script>
+    <script src="assets/js/summary.js"></script>
+
+</head>
+
+<body onload="initSummary()">
+
+    <div class="overflow-summary">
+        <div w3-include-html="assets/templates/header.html"></div>
+
+        <div w3-include-html="assets/templates/navigation.html"></div>
+
+        <div class="summary-main" id="summary-main">
+
+            <div class="kanban-text">Kanban Project Management Tool</div>
+
+            <div class="summary-headline-box">
+                <p class="summary-headline">Summary</p>
+                <div class="summary-border"></div>
+                <p class="summary-text">Everything in a nutshell!</p>
+                <div class="summary-border-rs"></div>
+            </div>
+
+            <div class="summary-overview-box">
+                <div class="summary-tasks-box">
+                    <div class="summary-tasks-squares" onclick="linkToBoard()">
+                        <span class="summary-tasks-number" id="sum-of-tasks"></span>
+                        <span class="summary-tasks-text">Tasks in<br>Board</span>
+                    </div>
+                    <div class="summary-tasks-squares" onclick="linkToBoard()">
+                        <span class="summary-tasks-number" id="sum-of-progress"></span>
+                        <span class="summary-tasks-text">Tasks in<br>Progress</span>
+                    </div>
+                    <div class="summary-tasks-squares" onclick="linkToBoard()">
+                        <span class="summary-tasks-number" id="sum-of-feedback"></span>
+                        <span class="summary-tasks-text">Awaiting Feedback</span>
+                    </div>
+                </div>
+
+                <div class="summary-urgency-box" onclick="linkToBoard()">
+                    <div class="summary-urgency-left-part">
+                        <img class="summary-urgency-img" src="assets/img/arrows-up-orange.svg">
+                        <div class="summary-urgency-left-part-child">
+                            <span class="summary-urgency-number" id="sum-of-urgency"></span>
+                            <span class="summary-urgency-text">Urgent</span>
+                        </div>
+                    </div>
+                    <div class="summary-vector"></div>
+                    <div class="summary-urgency-text-box">
+                        <span class="summary-date" id="summary-deadline">October,16 2022</span>
+                        <span class="summary-urgency-text">Upcoming Deadline</span>
+                    </div>
+                </div>
+
+                <div class="summary-todo-box">
+                    <div class="summary-todo-squares" onclick="linkToBoard()">
+                        <div class="summary-pen-image"></div>
+                        <div class="summary-todo-details">
+                            <span class="summary-todo-number" id="sum-of-todo"></span>
+                            <span class="summary-todo-text">To-do</span>
+                        </div>
+                    </div>
+                    <div class="summary-todo-squares" onclick="linkToBoard()">
+                        <div class="summary-check-image"></div>
+                        <div class="summary-todo-details">
+                            <span class="summary-todo-number" id="sum-of-done"></span>
+                            <span class="summary-todo-text">Done</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="summary-greeting-box">
+                    <span class="summary-greeting" id="summary-greeting"></span>
+                    <span class="summary-user" id="summary-user"></span>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

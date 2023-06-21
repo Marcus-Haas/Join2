@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+
+    <link rel="shortcut icon" href="assets/img/join-logo.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="assets/css/board.css">
+    <link rel="stylesheet" href="assets/css/board-responsive.css">
+    <link rel="stylesheet" href="assets/css/add-task.css">
+    <link rel="stylesheet" href="assets/css/contacts.css">
+    <link rel="stylesheet" href="assets/css/task-overlay.css">
+    <link rel="stylesheet" href="assets/css/floating-add-task-responsive.css">
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/addTask.js"></script>
+    <script src="assets/js/board.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/mini_backend.js"></script>
+    <script>setURL('https://marcus-haas.developerakademie.net/smallest_backend_ever');</script>
+    <script src="assets/js/boardHTML.js"></script>
+
+</head>
+
+<body onload="initBoard()">
+
+
+    <div class="overflow-board">
+
+        <div w3-include-html="assets/templates/header.html"></div>
+
+        <div w3-include-html="assets/templates/navigation.html"></div>
+
+        <div class="board-main">
+
+
+            <div class="kanban-board">Kanban Project Management Tool</div>
+
+            <div class="board-headline-section">
+                <span class="board-headline">Board</span>
+                <div class="board-headline-section-rightside">
+                    <div class="searchfield">
+                        <input class="board-search search-img" id="search" type="text" placeholder="Find Task"
+                            onkeyup="searchTasks()" onclick="hideSearchIcon()" onblur="showSearchIcon()">
+                        <div class="search-vector" id="search-vector"></div>
+                        <img class="search-icon" id="search-icon" src="assets/img/search.png">
+                    </div>
+                    <button class="board-add-task-btn" onclick="showFloatingAddTask()">Add task
+                        <span>+</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="drag-and-drop-main">
+                <div class="board-rs-helper">
+                    <div class="board-tasks">
+                        <span>To do</span>
+                        <div class="board-plus-image" onclick="showFloatingAddTask()"></div>
+                        <div class="board-plus-image-rs" onclick="moveToAddTask()"></div>
+                        <!---responsive element only--->
+                    </div>
+                    <div class="drag-and-drop-colums" id="board-column-todo" ondrop="drop(event, 'todo')"
+                        ondragover="allowDrop(event)">
+                    </div>
+                </div>
+                <div class="board-rs-helper">
+                    <div class="board-tasks">
+                        <span>In progress</span>
+                        <div class="board-plus-image" onclick="showFloatingAddTask()"></div>
+                        <div class="board-plus-image-rs" onclick="moveToAddTask()"></div>
+                        <!---responsive element only--->
+                    </div>
+                    <div class="drag-and-drop-colums" id="board-column-progress" ondrop="drop(event, 'progress')"
+                        ondragover="allowDrop(event)">
+                    </div>
+                </div>
+                <div class="board-rs-helper">
+                    <div class="board-tasks">
+                        <span>Awaiting Feedback</span>
+                        <div class="board-plus-image" onclick="showFloatingAddTask()"></div>
+                        <div class="board-plus-image-rs" onclick="moveToAddTask()"></div>
+                        <!---responsive element only--->
+                    </div>
+                    <div class="drag-and-drop-colums" id="board-column-feedback" ondrop="drop(event, 'feedback')"
+                        ondragover="allowDrop(event)">
+                    </div>
+                </div>
+                <div class="board-rs-helper">
+                    <div class="board-tasks">
+                        <span>Done</span>
+                        <div class="board-plus-image" onclick="showFloatingAddTask()"></div>
+                        <div class="board-plus-image-rs" onclick="moveToAddTask()"></div>
+                        <!---responsive element only--->
+                    </div>
+                    <div class="drag-and-drop-colums" id="board-column-done" ondrop="drop(event, 'done')"
+                        ondragover="allowDrop(event)">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dark-body-board d-none" id="dark-body"></div>
+
+        <div class="floating-addTask" id="floating-addTask"></div>
+
+
+        <div class="board-rs-addtask-btn" title="Add Task" onclick="moveToAddTask()"></div>
+
+        <div class="task-added-message-floating-board" id="task-added-message-board">Task added to board
+            <img src="assets/img/board.svg">
+        </div>
+    </div>
+
+</body>
+
+</html>

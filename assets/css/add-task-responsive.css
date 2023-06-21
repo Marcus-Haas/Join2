@@ -1,0 +1,257 @@
+.addtask-main-rs {
+    display: none;
+}
+
+.create-rs {
+    width: 120px !important;
+    height: 55px !important;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: none;
+}
+
+@media(max-width: 1200px) {
+    .add-task-main {
+        padding-left: 300px;
+    }
+
+    .add-task-headline {
+        font-size: 41px;
+    }
+
+    .helper {
+        gap: 20px;
+    }
+
+    .add-task-leftside {
+        width: 300px;
+    }
+
+    .add-task-rightside {
+        width: 300px;
+        gap: 44px;
+    }
+
+    .add-task-priobox {
+        width: 95px;
+        font-size: 17px;
+        gap: 8px;
+    }
+
+    .add-task-btns {
+        width: 645px;
+        gap: 10px;
+    }
+
+    .task-added-message {
+        left: 560px;
+    }
+
+    .add-task-vector {
+        height: 520px;
+    }
+}
+
+@media(max-width: 950px) {
+    .add-task-main {
+        padding-left: 270px;
+    }
+
+    .add-task-headline {
+        font-size: 35px;
+    }
+
+    .helper {
+        gap: 10px;
+    }
+
+    .add-task-leftside {
+        width: 250px;
+    }
+
+    .add-task-rightside {
+        width: 250px;
+    }
+
+    .add-task-priobox {
+        width: 80px;
+        gap: 5px;
+        font-size: 15px;
+    }
+
+    .add-task-priobox-image {
+        width: 15px;
+    }
+
+    .add-task-input-style {
+        font-size: 18px;
+    }
+
+    .add-task-btns {
+        width: 530px;
+        margin-top: -66px !important;
+    }
+
+    .add-task-clear-btn {
+        width: 100px;
+    }
+
+    .add-task-create-btn {
+        width: 152px;
+    }
+
+    .task-added-message {
+        left: 420px;
+    }
+}
+
+@media(max-width: 800px) {
+    .add-task-main {
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .add-task-headline {
+        width: 522px;
+        margin-top: 10px;
+    }
+
+    .helper {
+        margin-top: 20px;
+    }
+
+    .add-task-vector {
+        height: 520px;
+    }
+
+    .task-added-message {
+        left: 280px;
+    }
+
+    .kanban-add-task {
+        display: flex;
+        width: 522px;
+    }
+}
+
+
+@media(max-width: 700px) {
+    .task-added-message {
+        left: 28%;
+        bottom: 40%;
+    }
+
+    .add-task-main {
+        padding-left: 20px;
+        padding-right: 20px;
+        overflow: auto;
+        height: calc(100vh - 85px);
+    }
+
+    .add-task-main::-webkit-scrollbar {
+        display: none;
+    }
+
+    .kanban-add-task {
+        width: 100%;
+    }
+
+    .add-task-headline {
+        width: 100%;
+    }
+
+    .helper {
+        display: none;
+    }
+
+    .add-task-btns {
+        display: none;
+    }
+
+    .addtask-main-rs {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 5px;
+        margin-top: 10px;
+    }
+
+    .add-task-priobox {
+        width: 150px;
+        font-size: 15px;
+    }
+
+    .add-task-text {
+        font-size: 16px;
+    }
+
+    .add-task-input-style {
+        font-size: 16px;
+    }
+
+    .create-rs {
+        display: flex;
+    }
+}
+
+@media(max-width: 500px) {
+    .add-task-priobox {
+        width: 100px;
+    }
+
+    .task-added-message {
+        left: 24%;
+    }
+}
+
+@media(max-width: 450px) {
+    .task-added-message {
+        font-size: 16px;
+        left: 23%;
+    }
+}
+
+@media(max-width: 400px) {
+    .task-added-message {
+        left: 20%;
+    }
+}
+
+@media(max-width: 350px) {
+    .add-task-priobox {
+        width: 78px;
+    }
+
+    .task-added-message {
+        left: 13%;
+    }
+}
+
+@media(max-width: 400px) {
+    .task-added-message {
+        left: 7%;
+    }
+}
+
+@media(max-height:800px) {
+    .add-task-leftside {
+        height: 450px;
+        justify-content: unset;
+        gap: 20px;
+    }
+
+    .add-task-vector {
+        height: 435px !important;
+    }
+
+    .add-task-btns {
+        margin-top: 0;
+    }
+
+    .add-task-rightside {
+        gap: 20px;
+    }
+}

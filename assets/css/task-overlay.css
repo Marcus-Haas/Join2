@@ -1,0 +1,217 @@
+.frame-for-task-overlay {
+    width: 600px;
+    height: 800px;
+    background: white;
+    z-index: 1;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.close-task-overlay {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+}
+
+.closing {
+    cursor: pointer;
+}
+
+.task-overlay-category {
+    width: 140px;
+    height: 40px;
+    background: #FC71FF;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 20px;
+    margin-top: -25px;
+}
+
+.task-overlay-title {
+    font-size: 50px;
+    font-weight: 700;
+    color: #2A3647;
+}
+
+.task-overlay-description {
+    font-size: 20px;
+}
+
+.task-overlay-bold-text {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.task-overlay-text {
+    font-size: 20px;
+}
+
+.task-overlay-gap {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.task-overlay-urgencybox {
+    width: 130px;
+    height: 30px;
+    background: #29ABE2;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.task-overlay-circle {
+    width: 45px;
+    height: 45px;
+    background: rgb(6, 28, 196);
+    color: white;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-overlay-btns {
+    width: 100px;
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.task-overlay-delete {
+    width: 60px;
+    border: 1px solid #2A3647;
+    border-radius: 10px 0px 0px 10px;
+    background: url('../img/trash-dark.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.task-overlay-delete:hover {
+    cursor: pointer;
+    border: 2px solid #29ABE2;
+    background: url('../img/trash-blue.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.task-overlay-edit {
+    width: 60px;
+    border-radius: 0px 10px 10px 0px;
+    background-color: #2A3647;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-overlay-edit:hover {
+    cursor: pointer;
+    background-color: #29ABE2;
+}
+
+.task-overlay-edit-div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.task-overlay-input-title {
+    width: 420px;
+    height: 40px;
+    outline: none;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-size: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+    font-family: 'Inter';
+}
+
+.task-overlay-textarea {
+    outline: none;
+    width: 420px;
+    height: 120px;
+    box-sizing: border-box;
+    padding: 18px 15px;
+    font-size: 20px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-family: 'Inter';
+}
+
+.task-overlay-prio-main {
+    display: flex;
+    width: 420px;
+    justify-content: space-between;
+}
+
+.task-overlay-edit-circlebox {
+    display: flex;
+    gap: 8px;
+}
+
+.task-overlay-ok-btn-mother {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.task-overlay-ok-btn {
+    width: 100px;
+    height: 50px;
+    display: flex;
+    color: white;
+    background-color: #2A3647;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.task-overlay-ok-btn:hover {
+    cursor: pointer;
+    background-color: #29ABE2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.task-added-message-floating-board {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    justify-content: center;
+    gap: 10px;
+    left: 750px;
+    bottom: 360px;
+    height: 60px;
+    width: 240px;
+    border: none;
+    border-radius: 10px;
+    background: #2A3647;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    transform: translateY(100vh);
+    transition: all 225ms ease-in-out;
+    z-index: 1;
+}

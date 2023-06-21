@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+
+    <link rel="shortcut icon" href="assets/img/join-logo.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="assets/css/contacts.css">
+    <link rel="stylesheet" href="assets/css/contacts-overlay.css">
+    <link rel="stylesheet" href="assets/css/contacts-responsive.css">
+    <link rel="stylesheet" href="assets/css/contacts-responsive-max-width800.css">
+    <link rel="stylesheet" href="assets/css/add-task.css">
+    <link rel="stylesheet" href="assets/css/task-overlay.css">
+    <link rel="stylesheet" href="assets/css/board.css">
+    <link rel="stylesheet" href="assets/css/floating-add-task-responsive.css">
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/contacts.js"></script>
+    <script src="assets/js/contact-responsive.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/addTask.js"></script>
+    <script src="assets/js/board.js"></script>
+    <script src="assets/js/boardHTML.js"></script>
+    <script src="assets/js/mini_backend.js"></script>
+    <script>setURL('https://marcus-haas.developerakademie.net/smallest_backend_ever');</script>
+</head>
+
+<body onload="initContacts()">
+
+    <div class="overflow-contacts">
+
+        <div w3-include-html="assets/templates/header.html"></div>
+
+        <div w3-include-html="assets/templates/navigation.html"></div>
+
+        <div class="dark-body d-none" id="dark-body"></div>
+
+
+        <div class="contactbook-main" id="contactbook-main"></div>
+
+        <div class="contacts-headline-box">
+            <span class="contacts-headline">Contacts</span>
+            <div class="contacts-vector"></div>
+            <span class="contacts-text">Better with a team</span>
+        </div>
+
+        <div class="new-contact-btn" id="new-contact-btn" onclick="showCreateContact()">
+            <p>New contact</p>
+            <img src="assets/img/new-contact.svg">
+        </div>
+
+        <div class="floating-contact-box" id="floating-box"></div>
+
+
+
+        <div class="overlay-add-contact-box" id="create-overlay">
+            <div class="overlay-add-left">
+                <img class="overlay-add-logo" src="assets/img/join-logo-light.svg">
+                <span class="overlay-add-headline">Add contact</span>
+                <p class="overlay-add-text">Tasks are better with a team!</p>
+                <div class="overlay-add-vector"></div>
+            </div>
+            <div class="overlay-add-right">
+                <div class="overlay-add-circle">
+                    <img class="overlay-add-user-logo" src="assets/img/add-contact-user.svg">
+                </div>
+                <form class="overlay-add-form" onsubmit="createNewContact(); return false;">
+                    <div class="overlay-add-close">
+                        <span class="overlay-add-cross" onclick="closeCreateContact()">X</span>
+                    </div>
+                    <div class="overlay-input-fields">
+                        <input class="overlay-input-style name-image" id="add-name" type="text" placeholder="Name"
+                            required>
+                        <input class="overlay-input-style email-image" id="add-email" type="email" placeholder="Email"
+                            required>
+                        <div class="email-warning d-none" id="email-warning">Email already exist!</div>
+                        <input class="overlay-input-style phone-image" id="add-phone" type="tel" placeholder="Phone"
+                            required>
+                    </div>
+                    <div class="overlay-add-btns">
+                        <button class="overlay-add-cancel-btn" onclick="closeCreateContact()">Cancel
+                            <div>X</div>
+                        </button>
+                        <button class="overlay-add-create-btn">Create contact
+                            <img src="assets/img/overlay-add-check.svg">
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="overlay-add-contact-box" id="edit-overlay"></div>
+
+        <div class="floating-addTask" id="floating-addTask"></div>
+
+        <div class="created-overlay" id="created-overlay">Contact succesfully created</div>
+
+        <div class="task-added-message-floating" id="task-added-message">Task added to board
+            <img src="assets/img/board.svg">
+        </div>
+
+        <!-------------Responsive elements---------------------------------------------------------------------------------------->
+
+        <div class="contactbook-main-rs" id="contactbook-main-rs"></div>
+
+        <div class="floating-contact-box-rs" id="floating-box-rs"></div>
+
+        <div class="kanban-contacts" id="kanban-contacts">Kanban Project Management Tool</div>
+
+        <div class="contacts-headline-box-rs" id="contacts-headline-box-rs">
+            <div class="contacts-headline-rs">Contacts</div>
+            <div class="contacts-text-rs">Better with a team</div>
+            <div class="contacts-vector-rs"></div>
+            <img class="contacts-arrow-rs" src="assets/img/arrow-left-black.svg"
+                onclick="closeBusinessCardResponsive()">
+        </div>
+    </div>
+</body>
+
+</html>

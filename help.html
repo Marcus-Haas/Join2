@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help</title>
+
+    <link rel="shortcut icon" href="assets/img/join-logo.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="assets/css/help.css">
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/mini_backend.js"></script>
+    <script>setURL('https://marcus-haas.developerakademie.net/smallest_backend_ever');</script>
+</head>
+
+<body onload="includeHTML()">
+
+    <div w3-include-html="assets/templates/header.html"></div>
+
+    <div w3-include-html="assets/templates/navigation.html"></div>
+
+    <div class="help-main">
+
+        <div class="kanban-help">Kanban Project Management Tool</div>
+
+        <p class="help-headline">Help</p>
+
+        <a href="summary.html">
+            <img class="help-back-arrow" src="assets/img/arrow-left-black.svg">
+        </a>
+
+        <div class="help-explain-container">
+            <div class="help-explain-top-frame">
+                <span class="help-explain-title">What is Join?</span>
+                <span class="help-explain-text">Join is an agile method for evolutionary change management (kanban).
+                    This means
+                    that the existing process is improved in small steps. By making many small changes,
+                    the risk of each individual action is reduced.
+                </span>
+            </div>
+            <span class="how-to-use-title">How to use it</span>
+            <div class="help-explain-bottom-frame">
+                <div class="help-instructions-frame">
+                    <span class="help-instructions-number">1.</span>
+                    <span class="help-instructions-text">Create a new Task!<br>
+                        You can choose different categories, assign the task to your colleagues and set a priority.
+                    </span>
+                </div>
+                <div class="help-instructions-frame">
+                    <span class="help-instructions-number">2.</span>
+                    <span class="help-instructions-text">Check the board for the newest status of all tasks and be
+                        informed about any kind of progress.</span>
+                </div>
+                <div class="help-instructions-frame">
+                    <span class="help-instructions-number">3.</span>
+                    <span class="help-instructions-text">See what tasks are already done!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

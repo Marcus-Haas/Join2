@@ -1,0 +1,90 @@
+body {
+    background: #F6F7F8;
+}
+
+.legal-notice-main {
+    position: absolute;
+    top: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+    padding-top: 100px;
+    padding-left: 340px;
+    z-index: -1;
+}
+
+.ln-headline {
+    font-size: 50px;
+    font-weight: 700;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+}
+
+.ln-text-container {
+    margin-top: 100px;
+}
+
+.ln-back-arrow {
+    position: absolute;
+    top: 120px;
+    right: 150px;
+}
+
+.kanban-legal {
+    display: none;
+}
+
+.d-none {
+    display: none;
+}
+
+/***********responsive view**************/
+
+@media(max-width: 800px) {
+    .kanban-legal {
+        display: flex;
+        width: 305px;
+    }
+
+    .legal-notice-main {
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ln-text-container {
+        margin-top: 20px;
+        width: 305px;
+    }
+
+    .ln-headline {
+        width: 305px;
+    }
+
+    .ln-back-arrow {
+        top: 100px;
+        right: 50px;
+    }
+}
+
+@media(max-width: 400px) {
+    .ln-headline {
+        width: 260px;
+        font-size: 40px;
+    }
+
+    .ln-text-container {
+        width: 260px;
+    }
+
+    .kanban-legal {
+        width: 260px;
+        font-size: 14px;
+    }
+
+    .ln-back-arrow {
+        top: 98px;
+        right: 10px;
+    }
+}

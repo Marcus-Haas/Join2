@@ -1,0 +1,323 @@
+@media(max-width: 800px) {
+    .contactbook-main {
+        display: none;
+    }
+
+    .contacts-headline-box {
+        display: none;
+    }
+
+    .contactbook-main-rs {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        left: 0;
+        padding-top: 80px;
+        z-index: -2;
+    }
+
+    .alphabet-div {
+        display: none;
+    }
+
+    .alphabet-div-rs {
+        display: flex;
+    }
+
+    .floating-contact-box {
+        display: none;
+    }
+
+    .floating-contact-box-rs {
+        display: flex;
+        left: 50px;
+        top: 250px;
+        height: 430px;
+    }
+
+    .kanban-contacts {
+        display: flex;
+        position: absolute;
+        left: 50px;
+        margin-top: 30px;
+    }
+
+    .contacts-headline-box-rs {
+        display: flex;
+    }
+
+    .contact-information-edit {
+        display: none;
+    }
+
+    .new-contact-btn {
+        bottom: 0;
+        top: 80px;
+        z-index: -1;
+    }
+
+    .overlay-add-contact-box {
+        flex-direction: column;
+        top: 5%;
+        height: 80%;
+        left: 5%;
+        width: 90%;
+    }
+
+    .overlay-add-left {
+        width: 100%;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 30px;
+        height: 40%;
+        align-items: center;
+    }
+
+    .overlay-add-logo {
+        display: none;
+    }
+
+    .overlay-add-right {
+        width: 100%;
+        height: 60%;
+        border-top-right-radius: unset;
+        border-bottom-left-radius: 30px;
+        display: flex;
+        justify-content: center;
+        position: unset;
+    }
+
+    .overlay-add-circle {
+        top: 31%;
+        left: 42%;
+        width: 100px;
+        height: 100px;
+    }
+
+    .overlay-edit-circle {
+        top: 31%;
+        left: 42%;
+        width: 100px;
+        height: 100px;
+    }
+
+    .overlay-add-headline {
+        font-size: 50px;
+    }
+
+    .overlay-add-text {
+        font-size: 22px;
+    }
+
+    .overlay-add-vector {
+        margin-left: -225px;
+    }
+
+    .overlay-add-form {
+        width: 350px;
+        height: 320px;
+        position: unset;
+        margin-top: 20px;
+    }
+
+    .overlay-add-details-frame {
+        width: 350px;
+        height: 320px;
+        position: unset;
+        margin-top: 20px;
+    }
+
+    .overlay-input-fields {
+        margin-top: 45px;
+    }
+
+    .name-image {
+        background-position-x: 310px;
+    }
+
+    .email-image {
+        background-position-x: 310px;
+    }
+
+    .phone-image {
+        background-position-x: 310px;
+    }
+
+    .overlay-add-btns {
+        justify-content: center;
+    }
+
+    .overlay-add-cancel-btn {
+        display: none;
+    }
+
+    .overlay-add-create-btn {
+        width: 200px;
+    }
+
+    .overlay-add-close {
+        position: absolute;
+        top: 15px;
+        color: white;
+        right: 20px;
+    }
+}
+
+@media(max-width: 600px) {
+    .created-overlay {
+        width: 250px;
+        font-size: 17px;
+        left: 24%;
+    }
+
+    .overlay-add-circle {
+        left: 40%;
+    }
+
+    .overlay-edit-circle {
+        left: 40%;
+    }
+}
+
+@media(max-width: 475px) {
+    .contactbook-main-rs {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .kanban-contacts {
+        left: 10px;
+    }
+
+    .contacts-headline-box-rs {
+        left: 10px;
+    }
+
+    .floating-contact-box-rs {
+        left: 10px;
+    }
+
+    .floating-circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    .floating-contact-name {
+        font-size: 22px;
+    }
+
+    .contacts-arrow-rs {
+        left: 240px
+    }
+
+    .contact-rs-icons {
+        width: 260px;
+    }
+
+    .created-overlay {
+        left: 6%;
+    }
+
+    .overlay-add-contact-box {
+        width: 99%;
+        left: 2px;
+    }
+
+    .overlay-add-left {
+        padding: 20px 10px;
+    }
+
+    .overlay-add-headline {
+        font-size: 38px;
+    }
+
+    .overlay-add-text {
+        font-size: 18px;
+    }
+
+    .overlay-add-vector {
+        margin-left: -170px;
+    }
+
+    .overlay-add-circle {
+        width: 90px;
+        height: 90px;
+        left: 40%;
+    }
+
+    .overlay-edit-circle {
+        width: 90px;
+        height: 90px;
+        left: 40%;
+    }
+
+    .overlay-add-form {
+        width: 250px;
+    }
+
+    .overlay-add-details-frame {
+        width: 250px;
+    }
+
+    .name-image {
+        background-position-x: 215px;
+    }
+
+    .email-image {
+        background-position-x: 215px;
+    }
+
+    .phone-image {
+        background-position-x: 215px;
+    }
+}
+
+@media(max-width: 400px) {
+    .overlay-add-circle {
+        left: 36%;
+    }
+
+    .overlay-edit-circle {
+        left: 36%;
+    }
+}
+
+@media(max-width: 300px) {
+    .overlay-add-circle {
+        left: 34%;
+    }
+
+    .overlay-edit-circle {
+        left: 34%;
+    }
+}
+
+@media(max-height: 800px) {
+    .floating-contact-box-rs {
+        height: 300px;
+    }
+
+    .overlay-input-fields {
+        gap: 20px;
+    }
+
+    .contact-rs-icons {
+        position: absolute;
+        bottom: 0px;
+        left: 290px;
+        padding-right: 0px;
+        width: unset;
+    }
+
+    .contacts-arrow-rs {
+        left: 290px;
+    }
+
+    .overlay-add-form {
+        height: 290px;
+    }
+
+    .overlay-input-fields {
+        margin-top: 35px;
+        gap: 15px;
+    }
+}

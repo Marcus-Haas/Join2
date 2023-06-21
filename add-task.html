@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+
+    <link rel="shortcut icon" href="assets/img/join-logo.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="assets/css/add-task.css">
+    <link rel="stylesheet" href="assets/css/add-task-responsive.css">
+
+
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/board.js"></script>
+    <script src="assets/js/addTask.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/mini_backend.js"></script>
+    <script>setURL('https://marcus-haas.developerakademie.net/smallest_backend_ever');</script>
+
+</head>
+
+<body onload="initAddTask()">
+
+
+    <div class="overflow-addtask">
+        <div w3-include-html="assets/templates/header.html"></div>
+
+        <div w3-include-html="assets/templates/navigation.html"></div>
+
+        <div class="add-task-main">
+
+            <div class="kanban-add-task">Kanban Project Management Tool</div>
+
+            <span class="add-task-headline">Add Task</span>
+
+            <div class="helper">
+                <div class="add-task-leftside">
+                    <div class="add-task-titlebox">
+                        <span class="add-task-text">Title</span>
+                        <input class="add-task-input-style" id="title" type="text" placeholder="Enter a title">
+                        <span class="add-task-warning-text d-none" id="required-title">This field is required</span>
+                    </div>
+                    <div class="add-task-titlebox">
+                        <span class="add-task-text">Description</span>
+                        <textarea class="add-task-textarea" name="" id="description" cols="30" rows="10"
+                            placeholder="Enter a description"></textarea>
+                        <span class="add-task-warning-text d-none" id="required-description">This field is
+                            required</span>
+                    </div>
+                    <div class="add-task-titlebox">
+                        <span class="add-task-text">Category</span>
+                        <select class="add-task-input-style" name="" id="category">
+                            <option selected disabled hidden>Select task category</option>
+                            <option>Sales</option>
+                            <option>Backoffice</option>
+                            <option>Marketing</option>
+                            <option>Design</option>
+                            <option>Media</option>
+                        </select>
+                    </div>
+                    <div class="add-task-titlebox">
+                        <span class="add-task-text">Assigned to</span>
+                        <select class="add-task-input-style" name="" id="assign">
+                            <option selected disabled hidden>Select contacts to assign</option>
+                            <option>Marcus Haas</option>
+                            <option>Anke Fries</option>
+                            <option>Edna der Hund</option>
+                            <option id="option"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="add-task-vector"></div>
+
+                <div class="add-task-rightside">
+                    <div class="add-task-titlebox">
+                        <span class="add-task-text">Due date</span>
+                        <input class="add-task-input-style" id="date" type="date">
+                        <span class="add-task-warning-text d-none" id="required-date">This field is required</span>
+                    </div>
+                    <div class="add-task-titlebox">
+                        <span class="add-task-text">Prio</span>
+                        <div class="add-task-prio-main">
+                            <div class="add-task-priobox" id="prio-urgent" onclick="choosePrioUrgent()">
+                                <span>Urgent</span>
+                                <img class="add-task-priobox-image" id="urgent-img" src="assets/img/urgent.svg">
+                            </div>
+                            <div class="add-task-priobox" id="prio-medium" onclick="choosePrioMedium()">
+                                <span>Medium</span>
+                                <img class="add-task-priobox-image" id="medium-img" src="assets/img/medium.svg">
+                            </div>
+                            <div class="add-task-priobox" id="prio-low" onclick="choosePrioLow()">
+                                <span>Low</span>
+                                <img class="add-task-priobox-image" id="low-img" src="assets/img/low.svg">
+                            </div>
+                        </div>
+                        <span class="add-task-warning-text d-none" id="required-prio">Please select prio</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="add-task-btns">
+                <button class="add-task-clear-btn">Clear
+                    <span>X</span>
+                </button>
+                <button class="add-task-create-btn" onclick="createTask()">Create Task
+                    <img src="assets/img/overlay-add-check.svg">
+                </button>
+            </div>
+
+
+            <!-------------------------Responsive version--------------------------------------------------->
+
+
+            <div class="addtask-main-rs">
+                <div class="add-task-titlebox">
+                    <span class="add-task-text">Title</span>
+                    <input class="add-task-input-style" id="title-rs" type="text" placeholder="Enter a title">
+                    <span class="add-task-warning-text d-none" id="required-title-rs">This field is required</span>
+                </div>
+                <div class="add-task-titlebox">
+                    <span class="add-task-text">Description</span>
+                    <textarea class="add-task-textarea" name="" id="description-rs" cols="30" rows="10"
+                        placeholder="Enter a description"></textarea>
+                    <span class="add-task-warning-text d-none" id="required-description-rs">This field is
+                        required</span>
+                </div>
+                <div class="add-task-titlebox">
+                    <span class="add-task-text">Prio</span>
+                    <div class="add-task-prio-main">
+                        <div class="add-task-priobox" id="prio-urgent-rs" onclick="choosePrioUrgentResponsive()">
+                            <span>Urgent</span>
+                            <img class="add-task-priobox-image" id="urgent-img-rs" src="assets/img/urgent.svg">
+                        </div>
+                        <div class="add-task-priobox" id="prio-medium-rs" onclick="choosePrioMediumResponsive()">
+                            <span>Medium</span>
+                            <img class="add-task-priobox-image" id="medium-img-rs" src="assets/img/medium.svg">
+                        </div>
+                        <div class="add-task-priobox" id="prio-low-rs" onclick="choosePrioLowResponsive()">
+                            <span>Low</span>
+                            <img class="add-task-priobox-image" id="low-img-rs" src="assets/img/low.svg">
+                        </div>
+                    </div>
+                    <span class="add-task-warning-text d-none" id="required-prio-rs">Please select prio</span>
+                </div>
+                <div class="add-task-titlebox">
+                    <span class="add-task-text">Due date</span>
+                    <input class="add-task-input-style" id="date-rs" type="date">
+                    <span class="add-task-warning-text d-none" id="required-date-rs">This field is required</span>
+                </div>
+                <div class="add-task-titlebox">
+                    <span class="add-task-text">Category</span>
+                    <select class="add-task-input-style" name="" id="category-rs">
+                        <option selected disabled hidden>Select task category</option>
+                        <option>Sales</option>
+                        <option>Backoffice</option>
+                        <option>Marketing</option>
+                        <option>Design</option>
+                        <option>Media</option>
+                    </select>
+                </div>
+                <div class="add-task-titlebox">
+                    <span class="add-task-text">Assigned to</span>
+                    <select class="add-task-input-style" name="" id="assign-rs">
+                        <option selected disabled hidden>Select contacts to assign</option>
+                        <option>Marcus Haas</option>
+                        <option>Anke Fries</option>
+                        <option>Edna der Hund</option>
+                        <option id="option-rs"></option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="add-task-create-btn create-rs" onclick="createTaskResponsive()">Create
+            <img src="assets/img/overlay-add-check.svg">
+        </button>
+
+        <div class="task-added-message" id="task-added-message">Task added to board
+            <img src="assets/img/board.svg">
+        </div>
+
+    </div>
+</body>
+
+</html>
