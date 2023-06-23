@@ -303,45 +303,15 @@ function randomNumber() {
 
 function randomColorPicker(i) {
     let color = document.getElementById(`contactbook-circle${i}`);
-    randomColorPickerExtention1(color, i);
-    randomColorPickerExtention2(color, i);
+    generateColors(color, i);
 }
 
 
-function randomColorPickerExtention1(color, i) {
-    if (contacts[i]['color'] == 0) {
-        color.classList.add('circle-color-0');
-    }
-    if (contacts[i]['color'] == 1) {
-        color.classList.add('circle-color-1');
-    }
-    if (contacts[i]['color'] == 2) {
-        color.classList.add('circle-color-2');
-    }
-    if (contacts[i]['color'] == 3) {
-        color.classList.add('circle-color-3');
-    }
-    if (contacts[i]['color'] == 4) {
-        color.classList.add('circle-color-4');
-    }
-}
-
-
-function randomColorPickerExtention2(color, i) {
-    if (contacts[i]['color'] == 5) {
-        color.classList.add('circle-color-5');
-    }
-    if (contacts[i]['color'] == 6) {
-        color.classList.add('circle-color-6');
-    }
-    if (contacts[i]['color'] == 7) {
-        color.classList.add('circle-color-7');
-    }
-    if (contacts[i]['color'] == 8) {
-        color.classList.add('circle-color-8');
-    }
-    if (contacts[i]['color'] == 9) {
-        color.classList.add('circle-color-9');
+function generateColors(color, i) {
+    for (let j = 0; j <= 9; j++) {
+        if (contacts[i]['color'] == j) {
+            color.classList.add(`circle-color-${j}`);
+        }
     }
 }
 

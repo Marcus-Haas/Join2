@@ -52,8 +52,7 @@ function generateAlphabetHTMLResponsive(i) {
 
 function randomColorPickerResponsive(i) {
     let color = document.getElementById(`contactbook-circle-rs${i}`);
-    randomColorPickerExtention1(color, i);
-    randomColorPickerExtention2(color, i);
+    generateColors(color, i);
 }
 
 

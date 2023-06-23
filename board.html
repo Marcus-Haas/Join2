@@ -50,7 +50,7 @@
                         <div class="search-vector" id="search-vector"></div>
                         <img class="search-icon" id="search-icon" src="assets/img/search.png">
                     </div>
-                    <button class="board-add-task-btn" onclick="showFloatingAddTask()">Add task
+                    <button class="board-add-task-btn" onclick="showFloatingAddTask('todo')">Add task
                         <span>+</span>
                     </button>
                 </div>
@@ -60,7 +60,7 @@
                 <div class="board-rs-helper">
                     <div class="board-tasks">
                         <span>To do</span>
-                        <div class="board-plus-image" onclick="showFloatingAddTask()"></div>
+                        <div class="board-plus-image" onclick="showFloatingAddTask('todo')"></div>
                         <div class="board-plus-image-rs" onclick="moveToAddTask()"></div>
                         <!---responsive element only--->
                     </div>
@@ -71,7 +71,7 @@
                 <div class="board-rs-helper">
                     <div class="board-tasks">
                         <span>In progress</span>
-                        <div class="board-plus-image" onclick="showFloatingAddTask()"></div>
+                        <div class="board-plus-image" onclick="showFloatingAddTask('progress')"></div>
                         <div class="board-plus-image-rs" onclick="moveToAddTask()"></div>
                         <!---responsive element only--->
                     </div>
@@ -82,7 +82,7 @@
                 <div class="board-rs-helper">
                     <div class="board-tasks">
                         <span>Awaiting Feedback</span>
-                        <div class="board-plus-image" onclick="showFloatingAddTask()"></div>
+                        <div class="board-plus-image" onclick="showFloatingAddTask('feedback')"></div>
                         <div class="board-plus-image-rs" onclick="moveToAddTask()"></div>
                         <!---responsive element only--->
                     </div>
@@ -93,7 +93,7 @@
                 <div class="board-rs-helper">
                     <div class="board-tasks">
                         <span>Done</span>
-                        <div class="board-plus-image" onclick="showFloatingAddTask()"></div>
+                        <div class="board-plus-image" onclick="showFloatingAddTask('done')"></div>
                         <div class="board-plus-image-rs" onclick="moveToAddTask()"></div>
                         <!---responsive element only--->
                     </div>

@@ -1,5 +1,11 @@
 let allTasks = [];
 let dragID;
+let a = false;
+let b = false;
+let c = false;
+let d = false;
+let newStatusParameter;
+
 
 // drag and drop code by w3schools //
 function allowDrop(ev) {
@@ -19,7 +25,7 @@ function drop(ev, newStatus) {
     //ev.target.appendChild(document.getElementById(data));
     allTasks[dragID]['status'] = newStatus;
     pushTasksToBackend();
-    renderTasks();
+    prepareRenderTasks();
 }
 
 
@@ -27,91 +33,73 @@ async function initBoard() {
     await includeHTML();
     showActiveCategorieBoard();
     loadTasksFromBackend();
-    renderTasks();
+    prepareRenderTasks();
 }
 
 
-function renderTasks() {
-    renderToDo();
-    renderProgress();
-    renderFeedback();
-    renderDone();
-}
-
-
-function renderToDo() {
+function prepareRenderTasks() {
     let todo = document.getElementById('board-column-todo');
-    let x = false;
-    todo.innerHTML = "";
+    let progress = document.getElementById('board-column-progress');
+    let feedback = document.getElementById('board-column-feedback');
+    let done = document.getElementById('board-column-done');
+    resetParameter();
+    cleanBoard();
+    renderTasks(todo, progress, feedback, done);
+    generateEmptyText(todo, progress, feedback, done);
+}
+
+
+function renderTasks(todo, progress, feedback, done) {
     for (let i = 0; i < allTasks.length; i++) {
         if (allTasks[i]['status'] == 'todo') {
-            todo.innerHTML += generateMiniTaskHTML(i);
-            checkPriorityAtAllTasks(i);
-            checkCategoryBackroundColor(i);
-            checkUserColor(i);
-            x = true;
+            a = true;
+            generateTask(todo, i);
+        }
+        if (allTasks[i]['status'] == 'progress') {
+            b = true;
+            generateTask(progress, i);
+        }
+        if (allTasks[i]['status'] == 'feedback') {
+            c = true;
+            generateTask(feedback, i);
+        }
+        if (allTasks[i]['status'] == 'done') {
+            d = true;
+            generateTask(done, i);
         }
     }
-    if (x == false) {
+}
+
+
+function generateTask(status, i) {
+    status.innerHTML += generateMiniTaskHTML(i);
+    checkPriorityAtAllTasks(i);
+    checkCategoryBackroundColor(i);
+    checkUserColor(i);
+}
+
+
+function generateEmptyText(todo, progress, feedback, done) {
+    if (a == false) {
         todo.innerHTML = generateEmptyTodoText();
     }
-}
-
-
-function renderProgress() {
-    let progress = document.getElementById('board-column-progress');
-    let x = false;
-    progress.innerHTML = "";
-    for (let i = 0; i < allTasks.length; i++) {
-        if (allTasks[i]['status'] == 'progress') {
-            progress.innerHTML += generateMiniTaskHTML(i);
-            checkPriorityAtAllTasks(i);
-            checkCategoryBackroundColor(i);
-            checkUserColor(i);
-            x = true;
-        }
-    }
-    if (x == false) {
+    if (b == false) {
         progress.innerHTML = generateEmptyProgressText();
     }
-}
-
-
-function renderFeedback() {
-    let feedback = document.getElementById('board-column-feedback');
-    let x = false;
-    feedback.innerHTML = "";
-    for (let i = 0; i < allTasks.length; i++) {
-        if (allTasks[i]['status'] == 'feedback') {
-            feedback.innerHTML += generateMiniTaskHTML(i);
-            checkPriorityAtAllTasks(i);
-            checkCategoryBackroundColor(i);
-            checkUserColor(i);
-            x = true;
-        }
-    }
-    if (x == false) {
+    if (c == false) {
         feedback.innerHTML = generateEmptyFeedbackText();
     }
+    if (d == false) {
+        done.innerHTML = generateEmptyDoneText();
+    }
 }
 
 
-function renderDone() {
-    let done = document.getElementById('board-column-done');
-    let x = false;
-    done.innerHTML = "";
-    for (let i = 0; i < allTasks.length; i++) {
-        if (allTasks[i]['status'] == 'done') {
-            done.innerHTML += generateMiniTaskHTML(i);
-            checkPriorityAtAllTasks(i);
-            checkCategoryBackroundColor(i);
-            checkUserColor(i);
-            x = true;
-        }
-    }
-    if (x == false) {
-        done.innerHTML = generateEmptyDoneText();
-    }
+function resetParameter() {
+    a = false;
+    b = false;
+    c = false;
+    d = false;
 }
 
 
@@ -130,11 +118,12 @@ function checkPriorityAtAllTasks(i) {
 }
 
 
-function showFloatingAddTask() {
+function showFloatingAddTask(actualStatus) {
     document.getElementById('dark-body').classList.remove('d-none');
     document.getElementById('floating-addTask').classList.add('show-floating-addTask');
     document.getElementById('floating-addTask').innerHTML = generateFloatingTaskHTML();
     getCurrentUserBoard();
+    newStatusParameter = actualStatus;
 }
 
 
@@ -183,7 +172,7 @@ function createFloatingTask() {
         'date': date,
         'category': category,
         'assign': assign,
-        'status': 'todo',
+        'status': newStatusParameter,
         'prio': checkPrio(),
     }
     pushFloatingTasks(title, description, date, category, assign, task);
@@ -198,7 +187,7 @@ function pushFloatingTasks(title, description, date, category, assign, task) {
         showAddedTaskMessageBoard();
         pushTasksToBackend();
         closeFloatingAddTask();
-        renderTasks();
+        prepareRenderTasks();
     }
 }
 
@@ -263,14 +252,14 @@ function updateTheTask(i) {
     allTasks[i]['prio'] = checkPrio();
     pushTasksToBackend();
     closeTaskDetails();
-    renderTasks();
+    prepareRenderTasks();
 }
 
 
 function deleteTask(i) {
     allTasks.splice(i, 1);
     pushTasksToBackend();
-    renderTasks();
+    prepareRenderTasks();
     closeTaskDetails();
 }
 
@@ -278,15 +267,12 @@ function deleteTask(i) {
 function searchTasks() {
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
-    cleanBoardForSearch();
+    cleanBoard();
     for (let i = 0; i < allTasks.length; i++) {
         let title = allTasks[i]['title'].toLowerCase().includes(search);
         let description = allTasks[i]['description'].toLowerCase().includes(search);
         if (title || description) {
-            renderToDoAfterSearch(i);
-            renderProgressAfterSearch(i);
-            renderFeedbackAfterSearch(i);
-            renderDoneAfterSearch(i);
+            prepareRenderAfterSearch(i);
             checkPriorityAtAllTasks(i);
             checkCategoryBackroundColor(i);
             checkUserColor(i);
@@ -294,40 +280,32 @@ function searchTasks() {
     }
 }
 
-
-function renderToDoAfterSearch(i) {
+function prepareRenderAfterSearch(i) {
     let todo = document.getElementById('board-column-todo');
+    let progress = document.getElementById('board-column-progress');
+    let feedback = document.getElementById('board-column-feedback');
+    let done = document.getElementById('board-column-done');
+    renderAfterSearch(todo, progress, feedback, done, i);
+}
+
+
+function renderAfterSearch(todo, progress, feedback, done, i) {
     if (allTasks[i]['status'] == 'todo') {
         todo.innerHTML += generateMiniTaskHTML(i);
     }
-}
-
-
-function renderProgressAfterSearch(i) {
-    let progress = document.getElementById('board-column-progress');
     if (allTasks[i]['status'] == 'progress') {
         progress.innerHTML += generateMiniTaskHTML(i);
     }
-}
-
-
-function renderFeedbackAfterSearch(i) {
-    let feedback = document.getElementById('board-column-feedback');
     if (allTasks[i]['status'] == 'feedback') {
         feedback.innerHTML += generateMiniTaskHTML(i);
     }
-}
-
-
-function renderDoneAfterSearch(i) {
-    let done = document.getElementById('board-column-done');
     if (allTasks[i]['status'] == 'done') {
         done.innerHTML += generateMiniTaskHTML(i);
     }
 }
 
 
-function cleanBoardForSearch() {
+function cleanBoard() {
     document.getElementById('board-column-todo').innerHTML = "";
     document.getElementById('board-column-progress').innerHTML = "";
     document.getElementById('board-column-feedback').innerHTML = "";
@@ -349,26 +327,17 @@ function showSearchIcon() {
 
 function checkCategoryBackroundColor(i) {
     let background = document.getElementById(`board-category${i}`);
-    if (allTasks[i]['category'] == 'Sales') {
-        background.classList.add('sales');
-    }
-    if (allTasks[i]['category'] == 'Marketing') {
-        background.classList.add('marketing');
-    }
-    if (allTasks[i]['category'] == 'Media') {
-        background.classList.add('media');
-    }
-    if (allTasks[i]['category'] == 'Backoffice') {
-        background.classList.add('backoffice');
-    }
-    if (allTasks[i]['category'] == 'Design') {
-        background.classList.add('design');
-    }
+    generateBackgroundColor(background, i);
 }
 
 
 function checkCategoryBackroundAtDetails(i) {
     let background = document.getElementById('task-overlay-category');
+    generateBackgroundColor(background, i);
+}
+
+
+function generateBackgroundColor(background, i) {
     if (allTasks[i]['category'] == 'Sales') {
         background.classList.add('sales');
     }
@@ -389,23 +358,17 @@ function checkCategoryBackroundAtDetails(i) {
 
 function checkUserColor(i) {
     let color = document.getElementById(`board-bottom-circle${i}`);
-    if (allTasks[i]['assign'] == 'Edna der Hund') {
-        color.classList.add('user1');
-    }
-    if (allTasks[i]['assign'] == 'Anke Fries') {
-        color.classList.add('user2');
-    }
-    if (allTasks[i]['assign'] == 'Marcus Haas') {
-        color.classList.add('user3');
-    }
-    if (allTasks[i]['assign'] == 'Guest') {
-        color.classList.add('user-guest');
-    }
+    generateUserColor(color, i);
 }
 
 
 function checkUserColorAtDetails(i) {
     let color = document.getElementById('task-overlay-circle');
+    generateUserColor(color, i);
+}
+
+
+function generateUserColor(color, i) {
     if (allTasks[i]['assign'] == 'Edna der Hund') {
         color.classList.add('user1');
     }
