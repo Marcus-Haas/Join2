@@ -327,13 +327,14 @@ function showSearchIcon() {
 
 function checkCategoryBackroundColor(i) {
     let background = document.getElementById(`board-category${i}`);
-    generateBackgroundColor(background, i);
+    background.classList.add(`${allTasks[i]['color']}`);
 }
 
 
 function checkCategoryBackroundAtDetails(i) {
     let background = document.getElementById('task-overlay-category');
-    generateBackgroundColor(background, i);
+    background.classList.add(`${allTasks[i]['color']}`);
+    //generateBackgroundColor(background, i);
 }
 
 

@@ -85,7 +85,7 @@
     }
 
     .add-task-input-style {
-        font-size: 18px;
+        font-size: 17px;
     }
 
     .add-task-btns {
@@ -103,6 +103,18 @@
 
     .task-added-message {
         left: 420px;
+    }
+
+    .selected-category-div {
+        font-size: 17px;
+    }
+
+    .category-inputfield {
+        font-size: 17px;
+    }
+
+    .category-colors-div {
+        gap: 20px;
     }
 }
 

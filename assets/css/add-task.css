@@ -36,7 +36,7 @@ body {
 .add-task-leftside {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 30px;
     height: 500px;
     width: 400px;
 }
@@ -81,8 +81,171 @@ body {
     font-family: 'Inter';
 }
 
-.add-task-vector {
+.add-task-category {
     border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    height: 40px;
+    font-size: 20px;
+    padding: 0px 15px;
+    box-sizing: border-box;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.add-task-category:hover {
+    cursor: pointer;
+}
+
+.add-task-category-details {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.selected-category-div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-input-div {
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    height: 40px;
+    font-size: 20px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 0px 15px;
+    box-sizing: border-box;
+}
+
+.category-inputfield {
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    height: 38px;
+    font-size: 20px;
+    width: 100%;
+    padding: 0;
+}
+
+.category-input-rightside {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-input-vector {
+    height: 25px;
+    border: 1px solid #D1D1D1;
+}
+
+.category-input-image {
+    height: 10px;
+}
+
+.category-input-image:hover {
+    cursor: pointer;
+}
+
+.add-task-category-options {
+    height: 140px;
+    font-size: 20px;
+    background-color: white;
+    border: 1px solid #D1D1D1;
+    border-top: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: scroll;
+}
+
+.add-task-category-options::-webkit-scrollbar {
+    display: none;
+}
+
+.add-task-category-options-details {
+    height: 40px;
+    box-sizing: border-box;
+    padding: 0px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-task-category-options-details:hover {
+    cursor: pointer;
+    background-color: #D1D1D1;
+}
+
+.add-task-category-color-before {
+    height: 15px;
+    width: 15px;
+    background-color: white;
+    border-radius: 100%;
+    border: 2px solid white;
+}
+
+.add-task-category-color {
+    height: 15px;
+    width: 15px;
+    background-color: #FC71FF;
+    border-radius: 100%;
+    border: 2px solid white;
+}
+
+.category-colors-div {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.category-colors {
+    height: 15px;
+    width: 15px;
+    border-radius: 100%;
+    border: 3px solid White;
+}
+
+.category-colors:hover {
+
+    cursor: pointer;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
+}
+
+.first-color {
+    background: #08a0f3 !important;
+}
+
+.second-color {
+    background: #f30606 !important;
+}
+
+.third-color {
+    background: #9405d6 !important;
+}
+
+.fourth-color {
+    background: #23b310 !important;
+}
+
+.fifth-color {
+    background: #12827e !important;
+}
+
+.sixth-color {
+    background: #938706 !important;
+}
+
+.dark-border-circle {
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
+}
+
+.add-task-vector {
+    border: 1px solid #515050;
     height: 550px;
     width: 0px;
 }
@@ -212,23 +375,27 @@ body {
 }
 
 .sales {
-    background: #FC71FF;
+    background: #FC71FF !important;
 }
 
 .marketing {
-    background: #0038FF;
+    background: #0038FF !important;
 }
 
 .backoffice {
-    background: #1FD7C1;
+    background: #1FD7C1 !important;
 }
 
 .design {
-    background: #FF7A00;
+    background: #FF7A00 !important;
 }
 
 .media {
-    background: #FFC701;
+    background: #FFC701 !important;
+}
+
+.default {
+    background: white;
 }
 
 .kanban-add-task {
