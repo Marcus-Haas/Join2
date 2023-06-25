@@ -189,7 +189,7 @@
     }
 
     .task-overlay-edit {
-        display: none;
+        display: none !important;
     }
 
     .task-overlay-btns {

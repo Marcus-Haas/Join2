@@ -19,14 +19,41 @@ function generateFloatingTaskHTML() {
                 </div>
                 <div class="add-task-titlebox">
                     <span class="add-task-text">Category</span>
-                    <select class="add-task-input-style" name="" id="category">
-                        <option selected disabled hidden>Select task category</option>
-                        <option>Sales</option>
-                        <option>Backoffice</option>
-                        <option>Marketing</option>
-                        <option>Design</option>
-                        <option>Media</option>
-                    </select>
+                    <div>
+                        <div class="add-task-category" id="category" onclick="openCategoryOptions()">
+                            <div class="add-task-category-details">
+                                <div class="selected-category-div">
+                                    <span id="selected-category">Select task category</span>
+                                    <div class="add-task-category-color-before" id="selected-category-color"></div>
+                                </div>
+                                    <img src="assets/img/select-arrow.png">
+                            </div>
+                        </div>
+                        <span class="add-task-warning-text d-none" id="required-category">Please select a category</span>
+                        <div class="category-input-div d-none" id="category-input">
+                            <input class="category-inputfield" placeholder="New category name" id="category-inputfield">
+                            <div class="category-input-rightside">
+                                <img class="category-input-image" src="assets/img/category-x.png" onclick="closeNewCategory()">
+                                <div class="category-input-vector"></div>
+                                <img class="category-input-image" src="assets/img/category-check.png" onclick="saveNewCategory()">
+                            </div>
+                        </div>
+                        <div class="category-colors-div d-none" id="new-colors-option">
+                            <div class="category-colors first-color" id="selection-circle-0"
+                                    onclick="setNewCategoryColor(0, 'first-color')"></div>
+                            <div class="category-colors second-color" id="selection-circle-1"
+                                    onclick="setNewCategoryColor(1, 'second-color')"></div>
+                            <div class="category-colors third-color" id="selection-circle-2"
+                                    onclick="setNewCategoryColor(2, 'third-color')"></div>
+                            <div class="category-colors fourth-color" id="selection-circle-3"
+                                    onclick="setNewCategoryColor(3, 'fourth-color')"></div>
+                            <div class="category-colors fifth-color" id="selection-circle-4"
+                                    onclick="setNewCategoryColor(4, 'fifth-color')"></div>
+                            <div class="category-colors sixth-color" id="selection-circle-5"
+                                    onclick="setNewCategoryColor(5, 'sixth-color')"></div>
+                        </div>
+                        <div class="add-task-category-options d-none" id="category-options"></div>
+                    </div>
                 </div>
                 <div class="add-task-titlebox">
                     <span class="add-task-text">Assigned to</span>
@@ -225,14 +252,41 @@ function generateFloatingTaskHTMLAtContacts() {
                 </div>
                 <div class="add-task-titlebox">
                     <span class="add-task-text">Category</span>
-                    <select class="add-task-input-style" name="" id="category">
-                        <option selected disabled hidden>Select task category</option>
-                        <option>Sales</option>
-                        <option>Backoffice</option>
-                        <option>Marketing</option>
-                        <option>Design</option>
-                        <option>Media</option>
-                    </select>
+                    <div>
+                        <div class="add-task-category" id="category" onclick="openCategoryOptions()">
+                            <div class="add-task-category-details">
+                                <div class="selected-category-div">
+                                    <span id="selected-category">Select task category</span>
+                                    <div class="add-task-category-color-before" id="selected-category-color"></div>
+                                </div>
+                                    <img src="assets/img/select-arrow.png">
+                            </div>
+                        </div>
+                        <span class="add-task-warning-text d-none" id="required-category">Please select a category</span>
+                        <div class="category-input-div d-none" id="category-input">
+                            <input class="category-inputfield" placeholder="New category name" id="category-inputfield">
+                            <div class="category-input-rightside">
+                                <img class="category-input-image" src="assets/img/category-x.png" onclick="closeNewCategory()">
+                                <div class="category-input-vector"></div>
+                                <img class="category-input-image" src="assets/img/category-check.png" onclick="saveNewCategory()">
+                            </div>
+                        </div>
+                        <div class="category-colors-div d-none" id="new-colors-option">
+                            <div class="category-colors first-color" id="selection-circle-0"
+                                    onclick="setNewCategoryColor(0, 'first-color')"></div>
+                            <div class="category-colors second-color" id="selection-circle-1"
+                                    onclick="setNewCategoryColor(1, 'second-color')"></div>
+                            <div class="category-colors third-color" id="selection-circle-2"
+                                    onclick="setNewCategoryColor(2, 'third-color')"></div>
+                            <div class="category-colors fourth-color" id="selection-circle-3"
+                                    onclick="setNewCategoryColor(3, 'fourth-color')"></div>
+                            <div class="category-colors fifth-color" id="selection-circle-4"
+                                    onclick="setNewCategoryColor(4, 'fifth-color')"></div>
+                            <div class="category-colors sixth-color" id="selection-circle-5"
+                                    onclick="setNewCategoryColor(5, 'sixth-color')"></div>
+                        </div>
+                        <div class="add-task-category-options d-none" id="category-options"></div>
+                    </div>
                 </div>
                 <div class="add-task-titlebox">
                     <span class="add-task-text">Assigned to</span>

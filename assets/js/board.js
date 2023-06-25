@@ -162,8 +162,9 @@ function createFloatingTask() {
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
     let date = document.getElementById('date').value;
-    let category = document.getElementById('category').value;
+    let category = selectedCategory;
     let assign = document.getElementById('assign').value;
+    color = newSelectedColor;
     let initials = assign.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
     let task = {
         'initials': initials,
@@ -174,20 +175,21 @@ function createFloatingTask() {
         'assign': assign,
         'status': newStatusParameter,
         'prio': checkPrio(),
+        'color': color,
     }
     pushFloatingTasks(title, description, date, category, assign, task);
 }
 
 
 function pushFloatingTasks(title, description, date, category, assign, task) {
-    checkFormInputs();
-    if (prio > 0 && title != "" && description != "" && date != "" && category != "" && assign != "") {
+    checkFormInputs(title, description, date);
+    if (prio > 0 && title != "" && description != "" && date != "" && category != 0 && assign != "") {
         allTasks.push(task);
         removeRequiredMessages();
-        showAddedTaskMessageBoard();
         pushTasksToBackend();
         closeFloatingAddTask();
         prepareRenderTasks();
+        showAddedTaskMessageBoard();
     }
 }
 
@@ -334,7 +336,6 @@ function checkCategoryBackroundColor(i) {
 function checkCategoryBackroundAtDetails(i) {
     let background = document.getElementById('task-overlay-category');
     background.classList.add(`${allTasks[i]['color']}`);
-    //generateBackgroundColor(background, i);
 }
 
 

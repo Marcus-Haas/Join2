@@ -360,7 +360,7 @@ body {
 }
 
 .show-task-added-message {
-    transform: translateY(0);
+    transform: translateY(0) !important;
 }
 
 .close-floating-task {

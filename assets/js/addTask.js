@@ -221,6 +221,9 @@ function setNewBorderOptions() {
     document.getElementById('category').style.borderBottom = 'none';
     document.getElementById('category').style.borderBottomRightRadius = '0px';
     document.getElementById('category').style.borderBottomLeftRadius = '0px';
+    document.getElementById('category-rs').style.borderBottom = 'none';
+    document.getElementById('category-rs').style.borderBottomRightRadius = '0px';
+    document.getElementById('category-rs').style.borderBottomLeftRadius = '0px';
 }
 
 
@@ -228,6 +231,9 @@ function unsetNewBorderOptions() {
     document.getElementById('category').style.borderBottom = '1px solid #D1D1D1';
     document.getElementById('category').style.borderBottomRightRadius = '10px';
     document.getElementById('category').style.borderBottomLeftRadius = '10px';
+    document.getElementById('category-rs').style.borderBottom = '1px solid #D1D1D1';
+    document.getElementById('category-rs').style.borderBottomRightRadius = '10px';
+    document.getElementById('category-rs').style.borderBottomLeftRadius = '10px';
 }
 
 
@@ -405,8 +411,9 @@ function createTaskResponsive() {
     let title = document.getElementById('title-rs').value;
     let description = document.getElementById('description-rs').value;
     let date = document.getElementById('date-rs').value;
-    let category = document.getElementById('category-rs').value;
+    let category = selectedCategory
     let assign = document.getElementById('assign-rs').value;
+    color = newSelectedColor
     let initials = assign.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
     let task = {
         'initials': initials,
@@ -416,7 +423,8 @@ function createTaskResponsive() {
         'category': category,
         'assign': assign,
         'status': 'todo',
-        'prio': checkPrio(),
+        'prio': checkPrioResponsive(),
+        'color': color,
     }
     pushTasksResponsive(title, description, date, category, assign, task);
 }
@@ -424,8 +432,8 @@ function createTaskResponsive() {
 
 
 function pushTasksResponsive(title, description, date, category, assign, task) {
-    checkFormInputsResponsive();
-    if (prio > 0 && title != "" && description != "" && date != "" && category != "" && assign != "") {
+    checkFormInputsResponsive(title, description, date);
+    if (prio > 0 && title != "" && description != "" && date != "" && category != 0 && assign != "") {
         allTasks.push(task);
         removeRequiredMessages();
         removePrioMediumResponsive();
@@ -436,18 +444,33 @@ function pushTasksResponsive(title, description, date, category, assign, task) {
 }
 
 
-function checkFormInputsResponsive() {
-    let titleInput = document.getElementById('title-rs').value;
-    let descriptionInput = document.getElementById('description-rs').value;
-    let dateInput = document.getElementById('date-rs').value;
-    if (titleInput == "") {
+function checkFormInputsResponsive(title, description, date) {
+    if (title == "") {
         document.getElementById('required-title-rs').classList.remove('d-none');
     }
-    if (descriptionInput == "") {
+    if (description == "") {
         document.getElementById('required-description-rs').classList.remove('d-none');
     }
-    if (dateInput == "") {
+    if (date == "") {
         document.getElementById('required-date-rs').classList.remove('d-none');
+    }
+    if (selectedCategory == 0) {
+        document.getElementById('required-category-rs').classList.remove('d-none');
+    }
+}
+
+
+function checkPrioResponsive() {
+    if (prio == 1) {
+        return 'urgent';
+    }
+    if (prio == 2) {
+        return 'medium';
+    }
+    if (prio == 3) {
+        return 'low';
+    } else {
+        document.getElementById('required-prio-rs').classList.remove('d-none');
     }
 }
 
@@ -457,4 +480,104 @@ function removeRequiredMessagesResponsive() {
     document.getElementById('required-date-rs').classList.add('d-none');
     document.getElementById('required-description-rs').classList.add('d-none');
     document.getElementById('required-title-rs').classList.add('d-none');
+}
+
+
+function openCategoryOptionsResponsive() {
+    setNewBorderOptions();
+    let categoryOptions = document.getElementById('category-options-rs');
+    categoryOptions.classList.remove('d-none');
+    categoryOptions.innerHTML = generateNewCategoryHTMLResponsive();
+    for (let i = 0; i < departmentArray.length; i++) {
+        categoryOptions.innerHTML += generateOptionsHTMLResponsive(i);
+    }
+}
+
+
+function generateNewCategoryHTMLResponsive() {
+    return /*html*/`
+    <div class="add-task-category-options-details" onclick="setNewCategoryResponsive()">New category</div>
+    `;
+}
+
+
+function generateOptionsHTMLResponsive(i) {
+    return /*html*/`
+    <div class="add-task-category-options-details" onclick="chooseCategoryResponsive(${i})">${departmentArray[i]['department']}
+        <div class="add-task-category-color ${departmentArray[i]['departmentColor']}"></div>
+    </div>
+    `;
+}
+
+
+function chooseCategoryResponsive(i) {
+    unsetCategoryColorResponsive();
+    unsetNewBorderOptions();
+    document.getElementById('category-options-rs').classList.add('d-none');
+    document.getElementById('selected-category-rs').innerHTML = departmentArray[i]['department'];
+    document.getElementById('selected-category-color-rs').classList.add(departmentArray[i]['departmentColor']);
+    document.getElementById('selected-category-color-rs').classList.remove('default');
+    selectedCategory = departmentArray[i]['department'];
+    newSelectedColor = departmentArray[i]['departmentColor']; 
+}
+
+
+function unsetCategoryColorResponsive() {
+    let color = document.getElementById('selected-category-color-rs');
+    for (let i = 0; i < departmentArray.length; i++) {
+        color.classList.remove(departmentArray[i]['departmentColor']);
+    }
+}
+
+
+function setNewCategoryResponsive() {
+    document.getElementById('category-options-rs').classList.add('d-none');
+    document.getElementById('category-rs').classList.add('d-none');
+    document.getElementById('category-input-rs').classList.remove('d-none');
+    document.getElementById('new-colors-option-rs').classList.remove('d-none');
+    document.getElementById('category-inputfield-rs').value = "";
+    removeNewCategoryColorResponsive();
+}
+
+
+function closeNewCategoryResponsive() {
+    document.getElementById('category-rs').classList.remove('d-none');
+    document.getElementById('category-input-rs').classList.add('d-none');
+    document.getElementById('new-colors-option-rs').classList.add('d-none');
+    document.getElementById('selected-category-rs').innerHTML = "Select task category";
+    document.getElementById('selected-category-color-rs').classList.add('default');
+    unsetNewBorderOptions();
+}
+
+
+function setNewCategoryColorResponsive(number, color) {
+    removeNewCategoryColorResponsive();
+    document.getElementById(`selection-circle-rs-${number}`).classList.add('dark-border-circle');
+    newSelectedColor = color;
+}
+
+
+function removeNewCategoryColorResponsive() {
+    for (let i = 0; i <= 5; i++) {
+        document.getElementById(`selection-circle-rs-${i}`).classList.remove('dark-border-circle');
+    }
+}
+
+
+function saveNewCategoryResponsive() {
+    let newCategory = document.getElementById('category-inputfield-rs').value;
+    selectedCategory = newCategory;
+    let newDepartment =
+    {
+        department: newCategory,
+        departmentColor: newSelectedColor,
+    }
+    departmentArray.push(newDepartment);
+    unsetCategoryColorResponsive();
+    document.getElementById('category-input-rs').classList.add('d-none');
+    document.getElementById('new-colors-option-rs').classList.add('d-none');
+    document.getElementById('category-rs').classList.remove('d-none');
+    document.getElementById('selected-category-rs').innerHTML = newCategory;
+    document.getElementById('selected-category-color-rs').classList.add(newSelectedColor);
+    unsetNewBorderOptions();
 }
