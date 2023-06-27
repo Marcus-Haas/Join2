@@ -122,7 +122,6 @@ function showFloatingAddTask(actualStatus) {
     document.getElementById('dark-body').classList.remove('d-none');
     document.getElementById('floating-addTask').classList.add('show-floating-addTask');
     document.getElementById('floating-addTask').innerHTML = generateFloatingTaskHTML();
-    getCurrentUserBoard();
     newStatusParameter = actualStatus;
 }
 
@@ -163,11 +162,10 @@ function createFloatingTask() {
     let description = document.getElementById('description').value;
     let date = document.getElementById('date').value;
     let category = selectedCategory;
-    let assign = document.getElementById('assign').value;
-    color = newSelectedColor;
-    let initials = assign.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
+    let assign = selectedAssign;
+    let color = newSelectedColor;
     let task = {
-        'initials': initials,
+        'initials': getInitials(assign),
         'title': title,
         'description': description,
         'date': date,
@@ -183,7 +181,7 @@ function createFloatingTask() {
 
 function pushFloatingTasks(title, description, date, category, assign, task) {
     checkFormInputs(title, description, date);
-    if (prio > 0 && title != "" && description != "" && date != "" && category != 0 && assign != "") {
+    if (prio > 0 && title != "" && description != "" && date != "" && category != 0 && assign != 0) {
         allTasks.push(task);
         removeRequiredMessages();
         pushTasksToBackend();

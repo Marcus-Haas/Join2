@@ -81,7 +81,7 @@ body {
     font-family: 'Inter';
 }
 
-.add-task-category {
+.add-task-category-assign {
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     height: 40px;
@@ -93,11 +93,11 @@ body {
     align-items: center;
 }
 
-.add-task-category:hover {
+.add-task-category-assign:hover {
     cursor: pointer;
 }
 
-.add-task-category-details {
+.add-task-category-assign-details {
     width: 100%;
     display: flex;
     align-items: center;
@@ -110,7 +110,7 @@ body {
     gap: 10px;
 }
 
-.category-input-div {
+.category-assign-input-div {
     border: 1px solid #D1D1D1;
     border-radius: 10px;
     height: 40px;
@@ -122,7 +122,7 @@ body {
     box-sizing: border-box;
 }
 
-.category-inputfield {
+.category-assign-inputfield {
     outline: none;
     border: none;
     border-radius: 10px;
@@ -132,26 +132,26 @@ body {
     padding: 0;
 }
 
-.category-input-rightside {
+.category-assign-input-rightside {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.category-input-vector {
+.category-assign-input-vector {
     height: 25px;
     border: 1px solid #D1D1D1;
 }
 
-.category-input-image {
+.category-assign-input-image {
     height: 10px;
 }
 
-.category-input-image:hover {
+.category-assign-input-image:hover {
     cursor: pointer;
 }
 
-.add-task-category-options {
+.add-task-category-assign-options {
     height: 140px;
     font-size: 20px;
     background-color: white;
@@ -162,11 +162,11 @@ body {
     overflow: scroll;
 }
 
-.add-task-category-options::-webkit-scrollbar {
+.add-task-category-assign-options::-webkit-scrollbar {
     display: none;
 }
 
-.add-task-category-options-details {
+.add-task-category-assign-options-details {
     height: 40px;
     box-sizing: border-box;
     padding: 0px 15px;
@@ -175,7 +175,7 @@ body {
     gap: 10px;
 }
 
-.add-task-category-options-details:hover {
+.add-task-category-assign-options-details:hover {
     cursor: pointer;
     background-color: #D1D1D1;
 }
@@ -211,7 +211,6 @@ body {
 }
 
 .category-colors:hover {
-
     cursor: pointer;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.9);
 }

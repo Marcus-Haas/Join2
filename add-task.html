@@ -18,6 +18,7 @@
     <script src="assets/js/index.js"></script>
     <script src="assets/js/board.js"></script>
     <script src="assets/js/addTask.js"></script>
+    <script src="assets/js/addTask-responsive.js"></script>
     <script src="assets/js/header.js"></script>
     <script src="assets/js/mini_backend.js"></script>
     <script>setURL('https://marcus-haas.developerakademie.net/smallest_backend_ever');</script>
@@ -55,8 +56,8 @@
                     <div class="add-task-titlebox">
                         <span class="add-task-text">Category</span>
                         <div>
-                            <div class="add-task-category" id="category" onclick="openCategoryOptions()">
-                                <div class="add-task-category-details">
+                            <div class="add-task-category-assign" id="category" onclick="openCategoryOptions()">
+                                <div class="add-task-category-assign-details">
                                     <div class="selected-category-div">
                                         <span id="selected-category">Select task category</span>
                                         <div class="add-task-category-color-before" id="selected-category-color"></div>
@@ -66,14 +67,14 @@
                             </div>
                             <span class="add-task-warning-text d-none" id="required-category">Please select a
                                 category</span>
-                            <div class="category-input-div d-none" id="category-input">
-                                <input class="category-inputfield" placeholder="New category name"
+                            <div class="category-assign-input-div d-none" id="category-input">
+                                <input class="category-assign-inputfield" placeholder="New category name"
                                     id="category-inputfield">
-                                <div class="category-input-rightside">
-                                    <img class="category-input-image" src="assets/img/category-x.png"
+                                <div class="category-assign-input-rightside">
+                                    <img class="category-assign-input-image" src="assets/img/category-x.png"
                                         onclick="closeNewCategory()">
-                                    <div class="category-input-vector"></div>
-                                    <img class="category-input-image" src="assets/img/category-check.png"
+                                    <div class="category-assign-input-vector"></div>
+                                    <img class="category-assign-input-image" src="assets/img/category-check.png"
                                         onclick="saveNewCategory()">
                                 </div>
                             </div>
@@ -91,20 +92,35 @@
                                 <div class="category-colors sixth-color" id="selection-circle-5"
                                     onclick="setNewCategoryColor(5, 'sixth-color')"></div>
                             </div>
-                            <div class="add-task-category-options d-none" id="category-options">
+                            <div class="add-task-category-assign-options d-none" id="category-options">
 
                             </div>
                         </div>
                     </div>
                     <div class="add-task-titlebox">
                         <span class="add-task-text">Assigned to</span>
-                        <select class="add-task-input-style" name="" id="assign">
-                            <option selected disabled hidden>Select contacts to assign</option>
-                            <option>Marcus Haas</option>
-                            <option>Anke Fries</option>
-                            <option>Edna der Hund</option>
-                            <option id="option"></option>
-                        </select>
+                        <div>
+                            <div class="add-task-category-assign" id="assign">
+                                <div class="add-task-category-assign-details" id="assign-onclick" onclick="openAssignOptions()">
+                                    <span class="selected-assign" id="selected-assign">Select contacts to assign</span>
+                                    <img src="assets/img/select-arrow.png">
+                                </div>
+                            </div>
+                            <span class="add-task-warning-text d-none" id="required-assign">Please select a
+                                contact</span>
+                            <div class="category-assign-input-div d-none" id="assign-input">
+                                <input class="category-assign-inputfield" placeholder="New contact name"
+                                    id="assign-inputfield">
+                                <div class="category-assign-input-rightside">
+                                    <img class="category-assign-input-image" src="assets/img/category-x.png"
+                                        onclick="closeNewAssign()">
+                                    <div class="category-assign-input-vector"></div>
+                                    <img class="category-assign-input-image" src="assets/img/category-check.png"
+                                        onclick="saveNewAssign()">
+                                </div>
+                            </div>
+                            <div class="add-task-category-assign-options d-none" id="assign-options"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -190,8 +206,9 @@
                     <span class="add-task-text">Category</span>
 
                     <div>
-                        <div class="add-task-category" id="category-rs" onclick="openCategoryOptionsResponsive()">
-                            <div class="add-task-category-details">
+                        <div class="add-task-category-assign" id="category-rs"
+                            onclick="openCategoryOptionsResponsive()">
+                            <div class="add-task-category-assign-details">
                                 <div class="selected-category-div">
                                     <span id="selected-category-rs">Select task category</span>
                                     <div class="add-task-category-color-before" id="selected-category-color-rs"></div>
@@ -201,13 +218,14 @@
                         </div>
                         <span class="add-task-warning-text d-none" id="required-category-rs">Please select a
                             category</span>
-                        <div class="category-input-div d-none" id="category-input-rs">
-                            <input class="category-inputfield" placeholder="New category name" id="category-inputfield-rs">
-                            <div class="category-input-rightside">
-                                <img class="category-input-image" src="assets/img/category-x.png"
+                        <div class="category-assign-input-div d-none" id="category-input-rs">
+                            <input class="category-assign-inputfield" placeholder="New category name"
+                                id="category-inputfield-rs">
+                            <div class="category-assign-input-rightside">
+                                <img class="category-assign-input-image" src="assets/img/category-x.png"
                                     onclick="closeNewCategoryResponsive()">
-                                <div class="category-input-vector"></div>
-                                <img class="category-input-image" src="assets/img/category-check.png"
+                                <div class="category-assign-input-vector"></div>
+                                <img class="category-assign-input-image" src="assets/img/category-check.png"
                                     onclick="saveNewCategoryResponsive()">
                             </div>
                         </div>
@@ -225,20 +243,35 @@
                             <div class="category-colors sixth-color" id="selection-circle-rs-5"
                                 onclick="setNewCategoryColorResponsive(5, 'sixth-color')"></div>
                         </div>
-                        <div class="add-task-category-options d-none" id="category-options-rs">
+                        <div class="add-task-category-assign-options d-none" id="category-options-rs">
                         </div>
                     </div>
 
                 </div>
                 <div class="add-task-titlebox">
                     <span class="add-task-text">Assigned to</span>
-                    <select class="add-task-input-style" name="" id="assign-rs">
-                        <option selected disabled hidden>Select contacts to assign</option>
-                        <option>Marcus Haas</option>
-                        <option>Anke Fries</option>
-                        <option>Edna der Hund</option>
-                        <option id="option-rs"></option>
-                    </select>
+                    <div>
+                        <div class="add-task-category-assign" id="assign-rs">
+                            <div class="add-task-category-assign-details" id="assign-onclick-rs" onclick="openAssignOptionsResponsive()">
+                                <span class="selected-assign" id="selected-assign-rs">Select contacts to assign</span>
+                                <img src="assets/img/select-arrow.png">
+                            </div>
+                        </div>
+                        <span class="add-task-warning-text d-none" id="required-assign-rs">Please select a
+                            contact</span>
+                        <div class="category-assign-input-div d-none" id="assign-input-rs">
+                            <input class="category-assign-inputfield" placeholder="New contact name"
+                                id="assign-inputfield-rs">
+                            <div class="category-assign-input-rightside">
+                                <img class="category-assign-input-image" src="assets/img/category-x.png"
+                                    onclick="closeNewAssignResponsive()">
+                                <div class="category-assign-input-vector"></div>
+                                <img class="category-assign-input-image" src="assets/img/category-check.png"
+                                    onclick="saveNewAssignResponsive()">
+                            </div>
+                        </div>
+                        <div class="add-task-category-assign-options d-none" id="assign-options-rs"></div>
+                    </div>
                 </div>
             </div>
 

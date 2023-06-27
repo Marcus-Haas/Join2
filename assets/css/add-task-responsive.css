@@ -109,7 +109,11 @@
         font-size: 17px;
     }
 
-    .category-inputfield {
+    .category-assign-inputfield {
+        font-size: 17px;
+    }
+
+    .selected-assign {
         font-size: 17px;
     }
 

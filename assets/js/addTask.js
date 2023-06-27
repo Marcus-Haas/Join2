@@ -1,6 +1,7 @@
 let prio = 0;
 let newSelectedColor;
 let selectedCategory = 0;
+let selectedAssign = 0;
 let departmentArray = [
     {
         department: 'Sales',
@@ -24,12 +25,23 @@ let departmentArray = [
     }
 ];
 
+let assignArray = [
+    {
+        assignName: 'Sidney Crosby',
+    },
+    {
+        assignName: 'Leon Draisaitl',
+    },
+    {
+        assignName: 'Joe Pavelski',
+    },
+];
+
 
 async function initAddTask() {
     await includeHTML();
     showActiveCategorieAddTask();
     loadTasksFromBackend();
-    getCurrentUser();
 }
 
 
@@ -107,11 +119,10 @@ function createTask() {
     let description = document.getElementById('description').value;
     let date = document.getElementById('date').value;
     let category = selectedCategory;
-    let assign = document.getElementById('assign').value;
+    let assign = selectedAssign;
     let color = newSelectedColor;
-    let initials = assign.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
     let task = {
-        'initials': initials,
+        'initials': getInitials(assign),
         'title': title,
         'description': description,
         'date': date,
@@ -127,7 +138,7 @@ function createTask() {
 
 function pushTasks(title, description, date, category, assign, task) {
     checkFormInputs(title, description, date);
-    if (prio > 0 && title != "" && description != "" && date != "" && category != 0 && assign != "") {
+    if (prio > 0 && title != "" && description != "" && date != "" && category != 0 && assign != 0) {
         allTasks.push(task);
         removeRequiredMessages();
         showAddedTaskMessage();
@@ -135,6 +146,15 @@ function pushTasks(title, description, date, category, assign, task) {
         pushTasksToBackend();
     }
 }
+
+
+function getInitials(assign) {
+    if (assign) {
+        let initials = assign.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
+        return initials;
+    }
+}
+
 
 function pushTasksToBackend() {
     backend.setItem('allTasks', JSON.stringify(allTasks));
@@ -172,6 +192,9 @@ function checkFormInputs(title, description, date) {
     if (selectedCategory == 0) {
         document.getElementById('required-category').classList.remove('d-none');
     }
+    if (selectedAssign == 0) {
+        document.getElementById('required-assign').classList.remove('d-none');
+    }
 }
 
 
@@ -196,6 +219,7 @@ function removeRequiredMessages() {
     document.getElementById('required-description').classList.add('d-none');
     document.getElementById('required-title').classList.add('d-none');
     document.getElementById('required-category').classList.add('d-none');
+    document.getElementById('required-assign').classList.add('d-none');
 }
 
 
@@ -211,53 +235,42 @@ function showActiveCategorieAddTask() {
 }
 
 
-function getCurrentUser() {
-    document.getElementById('option').innerHTML = activeUser[0];
-    document.getElementById('option-rs').innerHTML = activeUser[0];
+function setNewBorderOptions(categoryOrAssign) {
+    document.getElementById(`${categoryOrAssign}`).style.borderBottom = 'none';
+    document.getElementById(`${categoryOrAssign}`).style.borderBottomRightRadius = '0px';
+    document.getElementById(`${categoryOrAssign}`).style.borderBottomLeftRadius = '0px';
 }
 
 
-function setNewBorderOptions() {
-    document.getElementById('category').style.borderBottom = 'none';
-    document.getElementById('category').style.borderBottomRightRadius = '0px';
-    document.getElementById('category').style.borderBottomLeftRadius = '0px';
-    document.getElementById('category-rs').style.borderBottom = 'none';
-    document.getElementById('category-rs').style.borderBottomRightRadius = '0px';
-    document.getElementById('category-rs').style.borderBottomLeftRadius = '0px';
-}
-
-
-function unsetNewBorderOptions() {
-    document.getElementById('category').style.borderBottom = '1px solid #D1D1D1';
-    document.getElementById('category').style.borderBottomRightRadius = '10px';
-    document.getElementById('category').style.borderBottomLeftRadius = '10px';
-    document.getElementById('category-rs').style.borderBottom = '1px solid #D1D1D1';
-    document.getElementById('category-rs').style.borderBottomRightRadius = '10px';
-    document.getElementById('category-rs').style.borderBottomLeftRadius = '10px';
+function unsetNewBorderOptions(categoryOrAssign) {
+    document.getElementById(`${categoryOrAssign}`).style.borderBottom = '1px solid #D1D1D1';
+    document.getElementById(`${categoryOrAssign}`).style.borderBottomRightRadius = '10px';
+    document.getElementById(`${categoryOrAssign}`).style.borderBottomLeftRadius = '10px';
 }
 
 
 function openCategoryOptions() {
-    setNewBorderOptions();
+    setNewBorderOptions('category');
     let categoryOptions = document.getElementById('category-options');
     categoryOptions.classList.remove('d-none');
     categoryOptions.innerHTML = generateNewCategoryHTML();
     for (let i = 0; i < departmentArray.length; i++) {
         categoryOptions.innerHTML += generateOptionsHTML(i);
     }
+    document.getElementById('category').setAttribute('onclick', 'closeNewCategory()');
 }
 
 
 function generateNewCategoryHTML() {
     return /*html*/`
-    <div class="add-task-category-options-details" onclick="setNewCategory()">New category</div>
+    <div class="add-task-category-assign-options-details" onclick="setNewCategory()">New category</div>
     `;
 }
 
 
 function generateOptionsHTML(i) {
     return /*html*/`
-    <div class="add-task-category-options-details" onclick="chooseCategory(${i})">${departmentArray[i]['department']}
+    <div class="add-task-category-assign-options-details" onclick="chooseCategory(${i})">${departmentArray[i]['department']}
         <div class="add-task-category-color ${departmentArray[i]['departmentColor']}"></div>
     </div>
     `;
@@ -266,13 +279,13 @@ function generateOptionsHTML(i) {
 
 function chooseCategory(i) {
     unsetCategoryColor();
-    unsetNewBorderOptions();
+    unsetNewBorderOptions('category');
     document.getElementById('category-options').classList.add('d-none');
     document.getElementById('selected-category').innerHTML = departmentArray[i]['department'];
     document.getElementById('selected-category-color').classList.add(departmentArray[i]['departmentColor']);
     document.getElementById('selected-category-color').classList.remove('default');
     selectedCategory = departmentArray[i]['department'];
-    newSelectedColor = departmentArray[i]['departmentColor']; 
+    newSelectedColor = departmentArray[i]['departmentColor'];
 }
 
 
@@ -298,9 +311,11 @@ function closeNewCategory() {
     document.getElementById('category').classList.remove('d-none');
     document.getElementById('category-input').classList.add('d-none');
     document.getElementById('new-colors-option').classList.add('d-none');
+    document.getElementById('category-options').classList.add('d-none');
     document.getElementById('selected-category').innerHTML = "Select task category";
     document.getElementById('selected-category-color').classList.add('default');
-    unsetNewBorderOptions();
+    unsetNewBorderOptions('category');
+    document.getElementById('category').setAttribute('onclick', 'openCategoryOptions()');
 }
 
 
@@ -326,258 +341,92 @@ function saveNewCategory() {
         department: newCategory,
         departmentColor: newSelectedColor,
     }
-    departmentArray.push(newDepartment);
-    unsetCategoryColor();
-    document.getElementById('category-input').classList.add('d-none');
-    document.getElementById('new-colors-option').classList.add('d-none');
-    document.getElementById('category').classList.remove('d-none');
-    document.getElementById('selected-category').innerHTML = newCategory;
-    document.getElementById('selected-category-color').classList.add(newSelectedColor);
-    unsetNewBorderOptions();
-}
-
-
-/*******************************responsive functions******************************************************************************/
-function choosePrioUrgentResponsive() {
-    let urgentPrio = document.getElementById('prio-urgent-rs');
-    let urgentIMG = document.getElementById('urgent-img-rs');
-    urgentPrio.style.color = 'white';
-    urgentPrio.style.backgroundColor = '#FF3D00';
-    urgentPrio.style.boxShadow = '0px 4px 4px rgba(0, 0, 0, 0.25)';
-    urgentIMG.src = 'assets/img/urgent-white.svg';
-    removePrioMediumResponsive();
-    removePrioLowResponsive();
-    prio = 1;
-}
-
-
-function choosePrioMediumResponsive() {
-    let mediumPrio = document.getElementById('prio-medium-rs');
-    let mediumIMG = document.getElementById('medium-img-rs');
-    mediumPrio.style.color = 'white';
-    mediumPrio.style.backgroundColor = '#FFA800';
-    mediumPrio.style.boxShadow = '0px 4px 4px rgba(0, 0, 0, 0.25)';
-    mediumIMG.src = 'assets/img/medium-white.svg';
-    removePrioUrgentResponsive();
-    removePrioLowResponsive();
-    prio = 2;
-}
-
-
-function choosePrioLowResponsive() {
-    let lowPrio = document.getElementById('prio-low-rs');
-    let lowIMG = document.getElementById('low-img-rs');
-    lowPrio.style.color = 'white';
-    lowPrio.style.backgroundColor = '#7AE229';
-    lowPrio.style.boxShadow = '0px 4px 4px rgba(0, 0, 0, 0.25)';
-    lowIMG.src = 'assets/img/low-white.svg';
-    removePrioUrgentResponsive();
-    removePrioMediumResponsive();
-    prio = 3;
-}
-
-
-function removePrioUrgentResponsive() {
-    let urgentPrio = document.getElementById('prio-urgent-rs');
-    let urgentIMG = document.getElementById('urgent-img-rs');
-    urgentPrio.style.color = '';
-    urgentPrio.style.backgroundColor = '';
-    urgentPrio.style.boxShadow = '';
-    urgentIMG.src = 'assets/img/urgent.svg';
-}
-
-
-function removePrioMediumResponsive() {
-    let mediumPrio = document.getElementById('prio-medium-rs');
-    let mediumIMG = document.getElementById('medium-img-rs');
-    mediumPrio.style.color = '';
-    mediumPrio.style.backgroundColor = '';
-    mediumPrio.style.boxShadow = '';
-    mediumIMG.src = 'assets/img/medium.svg';
-}
-
-
-function removePrioLowResponsive() {
-    let lowPrio = document.getElementById('prio-low-rs');
-    let lowIMG = document.getElementById('low-img-rs');
-    lowPrio.style.color = '';
-    lowPrio.style.backgroundColor = '';
-    lowPrio.style.boxShadow = '';
-    lowIMG.src = 'assets/img/low.svg';
-}
-
-
-function createTaskResponsive() {
-    let title = document.getElementById('title-rs').value;
-    let description = document.getElementById('description-rs').value;
-    let date = document.getElementById('date-rs').value;
-    let category = selectedCategory
-    let assign = document.getElementById('assign-rs').value;
-    color = newSelectedColor
-    let initials = assign.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
-    let task = {
-        'initials': initials,
-        'title': title,
-        'description': description,
-        'date': date,
-        'category': category,
-        'assign': assign,
-        'status': 'todo',
-        'prio': checkPrioResponsive(),
-        'color': color,
-    }
-    pushTasksResponsive(title, description, date, category, assign, task);
-}
-
-
-
-function pushTasksResponsive(title, description, date, category, assign, task) {
-    checkFormInputsResponsive(title, description, date);
-    if (prio > 0 && title != "" && description != "" && date != "" && category != 0 && assign != "") {
-        allTasks.push(task);
-        removeRequiredMessages();
-        removePrioMediumResponsive();
-        showAddedTaskMessage();
-        moveToBoard();
-        pushTasksToBackend();
+    if (selectedCategory != 0) {
+        departmentArray.push(newDepartment);
+        unsetCategoryColor();
+        document.getElementById('category-input').classList.add('d-none');
+        document.getElementById('new-colors-option').classList.add('d-none');
+        document.getElementById('category').classList.remove('d-none');
+        document.getElementById('selected-category').innerHTML = newCategory;
+        document.getElementById('selected-category-color').classList.add(newSelectedColor);
+        unsetNewBorderOptions('category');
     }
 }
 
 
-function checkFormInputsResponsive(title, description, date) {
-    if (title == "") {
-        document.getElementById('required-title-rs').classList.remove('d-none');
+function openAssignOptions() {
+    setNewBorderOptions('assign');
+    let assignOptions = document.getElementById('assign-options');
+    assignOptions.classList.remove('d-none');
+    assignOptions.innerHTML = generateNewAssignHTML();
+    for (let i = 0; i < assignArray.length; i++) {
+        assignOptions.innerHTML += generateAssignOptionsHTML(i);
     }
-    if (description == "") {
-        document.getElementById('required-description-rs').classList.remove('d-none');
-    }
-    if (date == "") {
-        document.getElementById('required-date-rs').classList.remove('d-none');
-    }
-    if (selectedCategory == 0) {
-        document.getElementById('required-category-rs').classList.remove('d-none');
-    }
+    document.getElementById('assign-onclick').setAttribute('onclick', 'closeNewAssign()');
 }
 
 
-function checkPrioResponsive() {
-    if (prio == 1) {
-        return 'urgent';
-    }
-    if (prio == 2) {
-        return 'medium';
-    }
-    if (prio == 3) {
-        return 'low';
-    } else {
-        document.getElementById('required-prio-rs').classList.remove('d-none');
-    }
-}
-
-
-function removeRequiredMessagesResponsive() {
-    document.getElementById('required-prio-rs').classList.add('d-none');
-    document.getElementById('required-date-rs').classList.add('d-none');
-    document.getElementById('required-description-rs').classList.add('d-none');
-    document.getElementById('required-title-rs').classList.add('d-none');
-}
-
-
-function openCategoryOptionsResponsive() {
-    setNewBorderOptions();
-    let categoryOptions = document.getElementById('category-options-rs');
-    categoryOptions.classList.remove('d-none');
-    categoryOptions.innerHTML = generateNewCategoryHTMLResponsive();
-    for (let i = 0; i < departmentArray.length; i++) {
-        categoryOptions.innerHTML += generateOptionsHTMLResponsive(i);
-    }
-}
-
-
-function generateNewCategoryHTMLResponsive() {
+function generateNewAssignHTML() {
     return /*html*/`
-    <div class="add-task-category-options-details" onclick="setNewCategoryResponsive()">New category</div>
+    <div class="add-task-category-assign-options-details" onclick="setNewAssign()">New contact</div>
+    <div class="add-task-category-assign-options-details" onclick="selectCurrentUserForAssign()">${activeUser[0]}</div>
     `;
 }
 
 
-function generateOptionsHTMLResponsive(i) {
+function generateAssignOptionsHTML(i) {
     return /*html*/`
-    <div class="add-task-category-options-details" onclick="chooseCategoryResponsive(${i})">${departmentArray[i]['department']}
-        <div class="add-task-category-color ${departmentArray[i]['departmentColor']}"></div>
-    </div>
+    <div class="add-task-category-assign-options-details" onclick="selectNewAssign(${i})">${assignArray[i]['assignName']}</div>
     `;
 }
 
 
-function chooseCategoryResponsive(i) {
-    unsetCategoryColorResponsive();
-    unsetNewBorderOptions();
-    document.getElementById('category-options-rs').classList.add('d-none');
-    document.getElementById('selected-category-rs').innerHTML = departmentArray[i]['department'];
-    document.getElementById('selected-category-color-rs').classList.add(departmentArray[i]['departmentColor']);
-    document.getElementById('selected-category-color-rs').classList.remove('default');
-    selectedCategory = departmentArray[i]['department'];
-    newSelectedColor = departmentArray[i]['departmentColor']; 
+function selectNewAssign(i) {
+    unsetNewBorderOptions('assign');
+    document.getElementById('assign-options').classList.add('d-none');
+    document.getElementById('selected-assign').innerHTML = assignArray[i]['assignName'];
+    selectedAssign = assignArray[i]['assignName'];
 }
 
 
-function unsetCategoryColorResponsive() {
-    let color = document.getElementById('selected-category-color-rs');
-    for (let i = 0; i < departmentArray.length; i++) {
-        color.classList.remove(departmentArray[i]['departmentColor']);
-    }
+function selectCurrentUserForAssign() {
+    unsetNewBorderOptions('assign');
+    document.getElementById('assign-options').classList.add('d-none');
+    document.getElementById('selected-assign').innerHTML = activeUser[0];
+    selectedAssign = activeUser[0];
 }
 
 
-function setNewCategoryResponsive() {
-    document.getElementById('category-options-rs').classList.add('d-none');
-    document.getElementById('category-rs').classList.add('d-none');
-    document.getElementById('category-input-rs').classList.remove('d-none');
-    document.getElementById('new-colors-option-rs').classList.remove('d-none');
-    document.getElementById('category-inputfield-rs').value = "";
-    removeNewCategoryColorResponsive();
+function setNewAssign() {
+    document.getElementById('assign-options').classList.add('d-none');
+    document.getElementById('assign').classList.add('d-none');
+    document.getElementById('assign-input').classList.remove('d-none');
+    document.getElementById('assign-inputfield').value = "";
 }
 
 
-function closeNewCategoryResponsive() {
-    document.getElementById('category-rs').classList.remove('d-none');
-    document.getElementById('category-input-rs').classList.add('d-none');
-    document.getElementById('new-colors-option-rs').classList.add('d-none');
-    document.getElementById('selected-category-rs').innerHTML = "Select task category";
-    document.getElementById('selected-category-color-rs').classList.add('default');
-    unsetNewBorderOptions();
+function closeNewAssign() {
+    document.getElementById('assign').classList.remove('d-none');
+    document.getElementById('assign-input').classList.add('d-none');
+    document.getElementById('assign-options').classList.add('d-none');
+    document.getElementById('selected-assign').innerHTML = "Select contacts to assign";
+    unsetNewBorderOptions('assign');
+    document.getElementById('assign-onclick').setAttribute('onclick', 'openAssignOptions()');
 }
 
 
-function setNewCategoryColorResponsive(number, color) {
-    removeNewCategoryColorResponsive();
-    document.getElementById(`selection-circle-rs-${number}`).classList.add('dark-border-circle');
-    newSelectedColor = color;
-}
-
-
-function removeNewCategoryColorResponsive() {
-    for (let i = 0; i <= 5; i++) {
-        document.getElementById(`selection-circle-rs-${i}`).classList.remove('dark-border-circle');
-    }
-}
-
-
-function saveNewCategoryResponsive() {
-    let newCategory = document.getElementById('category-inputfield-rs').value;
-    selectedCategory = newCategory;
-    let newDepartment =
+function saveNewAssign() {
+    let newAssign = document.getElementById('assign-inputfield').value;
+    selectedAssign = newAssign;
+    let newAssigment =
     {
-        department: newCategory,
-        departmentColor: newSelectedColor,
+        assignName: newAssign,
     }
-    departmentArray.push(newDepartment);
-    unsetCategoryColorResponsive();
-    document.getElementById('category-input-rs').classList.add('d-none');
-    document.getElementById('new-colors-option-rs').classList.add('d-none');
-    document.getElementById('category-rs').classList.remove('d-none');
-    document.getElementById('selected-category-rs').innerHTML = newCategory;
-    document.getElementById('selected-category-color-rs').classList.add(newSelectedColor);
-    unsetNewBorderOptions();
+    if (selectedAssign != 0) {
+        assignArray.push(newAssigment);
+        document.getElementById('assign-input').classList.add('d-none');
+        document.getElementById('assign').classList.remove('d-none');
+        document.getElementById('selected-assign').innerHTML = newAssign;
+        unsetNewBorderOptions('assign');
+    }
 }

@@ -20,8 +20,8 @@ function generateFloatingTaskHTML() {
                 <div class="add-task-titlebox">
                     <span class="add-task-text">Category</span>
                     <div>
-                        <div class="add-task-category" id="category" onclick="openCategoryOptions()">
-                            <div class="add-task-category-details">
+                        <div class="add-task-category-assign" id="category" onclick="openCategoryOptions()">
+                            <div class="add-task-category-assign-details">
                                 <div class="selected-category-div">
                                     <span id="selected-category">Select task category</span>
                                     <div class="add-task-category-color-before" id="selected-category-color"></div>
@@ -30,12 +30,12 @@ function generateFloatingTaskHTML() {
                             </div>
                         </div>
                         <span class="add-task-warning-text d-none" id="required-category">Please select a category</span>
-                        <div class="category-input-div d-none" id="category-input">
-                            <input class="category-inputfield" placeholder="New category name" id="category-inputfield">
-                            <div class="category-input-rightside">
-                                <img class="category-input-image" src="assets/img/category-x.png" onclick="closeNewCategory()">
-                                <div class="category-input-vector"></div>
-                                <img class="category-input-image" src="assets/img/category-check.png" onclick="saveNewCategory()">
+                        <div class="category-assign-input-div d-none" id="category-input">
+                            <input class="category-assign-inputfield" placeholder="New category name" id="category-inputfield">
+                            <div class="category-assign-input-rightside">
+                                <img class="category-assign-input-image" src="assets/img/category-x.png" onclick="closeNewCategory()">
+                                <div class="category-assign-input-vector"></div>
+                                <img class="category-assign-input-image" src="assets/img/category-check.png" onclick="saveNewCategory()">
                             </div>
                         </div>
                         <div class="category-colors-div d-none" id="new-colors-option">
@@ -52,18 +52,31 @@ function generateFloatingTaskHTML() {
                             <div class="category-colors sixth-color" id="selection-circle-5"
                                     onclick="setNewCategoryColor(5, 'sixth-color')"></div>
                         </div>
-                        <div class="add-task-category-options d-none" id="category-options"></div>
+                        <div class="add-task-category-assign-options d-none" id="category-options"></div>
                     </div>
                 </div>
                 <div class="add-task-titlebox">
                     <span class="add-task-text">Assigned to</span>
-                    <select class="add-task-input-style" name="" id="assign">
-                        <option selected disabled hidden>Select contacts to assign</option>
-                        <option>Marcus Haas</option>
-                        <option>Anke Fries</option>
-                        <option>Edna der Hund</option>
-                        <option id="option"></option>
-                    </select>
+                    <div>
+                            <div class="add-task-category-assign" id="assign">
+                                <div class="add-task-category-assign-details" id="assign-onclick" onclick="openAssignOptions()">
+                                    <span class="selected-assign" id="selected-assign">Select contacts to assign</span>
+                                    <img src="assets/img/select-arrow.png">
+                                </div>
+                            </div>
+                            <span class="add-task-warning-text d-none" id="required-assign">Please select a
+                                contact</span>
+                            <div class="category-assign-input-div d-none" id="assign-input">
+                                <input class="category-assign-inputfield" placeholder="New contact name"
+                                    id="assign-inputfield">
+                                <div class="category-assign-input-rightside">
+                                    <img class="category-assign-input-image" src="assets/img/category-x.png" onclick="closeNewAssign()">
+                                    <div class="category-assign-input-vector"></div>
+                                    <img class="category-assign-input-image" src="assets/img/category-check.png" onclick="saveNewAssign()">
+                                </div>
+                            </div>
+                            <div class="add-task-category-assign-options d-none" id="assign-options"></div>
+                        </div>
                 </div>
             </div>
 
@@ -253,8 +266,8 @@ function generateFloatingTaskHTMLAtContacts() {
                 <div class="add-task-titlebox">
                     <span class="add-task-text">Category</span>
                     <div>
-                        <div class="add-task-category" id="category" onclick="openCategoryOptions()">
-                            <div class="add-task-category-details">
+                        <div class="add-task-category-assign" id="category" onclick="openCategoryOptions()">
+                            <div class="add-task-category-assign-details">
                                 <div class="selected-category-div">
                                     <span id="selected-category">Select task category</span>
                                     <div class="add-task-category-color-before" id="selected-category-color"></div>
@@ -263,12 +276,12 @@ function generateFloatingTaskHTMLAtContacts() {
                             </div>
                         </div>
                         <span class="add-task-warning-text d-none" id="required-category">Please select a category</span>
-                        <div class="category-input-div d-none" id="category-input">
-                            <input class="category-inputfield" placeholder="New category name" id="category-inputfield">
-                            <div class="category-input-rightside">
-                                <img class="category-input-image" src="assets/img/category-x.png" onclick="closeNewCategory()">
-                                <div class="category-input-vector"></div>
-                                <img class="category-input-image" src="assets/img/category-check.png" onclick="saveNewCategory()">
+                        <div class="category-assign-input-div d-none" id="category-input">
+                            <input class="category-assign-inputfield" placeholder="New category name" id="category-inputfield">
+                            <div class="category-assign-input-rightside">
+                                <img class="category-assign-input-image" src="assets/img/category-x.png" onclick="closeNewCategory()">
+                                <div class="category-assign-input-vector"></div>
+                                <img class="category-assign-input-image" src="assets/img/category-check.png" onclick="saveNewCategory()">
                             </div>
                         </div>
                         <div class="category-colors-div d-none" id="new-colors-option">
@@ -285,23 +298,34 @@ function generateFloatingTaskHTMLAtContacts() {
                             <div class="category-colors sixth-color" id="selection-circle-5"
                                     onclick="setNewCategoryColor(5, 'sixth-color')"></div>
                         </div>
-                        <div class="add-task-category-options d-none" id="category-options"></div>
+                        <div class="add-task-category-assign-options d-none" id="category-options"></div>
                     </div>
                 </div>
                 <div class="add-task-titlebox">
                     <span class="add-task-text">Assigned to</span>
-                    <select class="add-task-input-style" name="" id="assign">
-                        <option selected disabled hidden>Select contacts to assign</option>
-                        <option>Marcus Haas</option>
-                        <option>Anke Fries</option>
-                        <option>Edna der Hund</option>
-                        <option id="option"></option>
-                    </select>
+                    <div>
+                            <div class="add-task-category-assign" id="assign">
+                                <div class="add-task-category-assign-details" id="assign-onclick" onclick="openAssignOptions()">
+                                    <span class="selected-assign" id="selected-assign">Select contacts to assign</span>
+                                    <img src="assets/img/select-arrow.png">
+                                </div>
+                            </div>
+                            <span class="add-task-warning-text d-none" id="required-assign">Please select a
+                                contact</span>
+                            <div class="category-assign-input-div d-none" id="assign-input">
+                                <input class="category-assign-inputfield" placeholder="New contact name"
+                                    id="assign-inputfield">
+                                <div class="category-assign-input-rightside">
+                                    <img class="category-assign-input-image" src="assets/img/category-x.png" onclick="closeNewAssign()">
+                                    <div class="category-assign-input-vector"></div>
+                                    <img class="category-assign-input-image" src="assets/img/category-check.png" onclick="saveNewAssign()">
+                                </div>
+                            </div>
+                            <div class="add-task-category-assign-options d-none" id="assign-options"></div>
+                        </div>
                 </div>
             </div>
-
             <div class="add-task-vector"></div>
-
             <div class="add-task-rightside">
                 <div class="add-task-titlebox">
                     <span class="add-task-text">Due date</span>
