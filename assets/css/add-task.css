@@ -363,14 +363,11 @@ body {
 }
 
 .close-floating-task {
-    width: 100%;
+    width: 105%;
     display: flex;
     justify-content: flex-end;
     font-size: 25px;
     cursor: pointer;
-    position: relative;
-    top: -40px;
-    right: -40px;
 }
 
 .sales {
