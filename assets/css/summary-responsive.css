@@ -206,7 +206,7 @@
     }
 
     .summary-overview-box {
-        margin-top: 40px;
+        margin-top: 30px;
     }
 
     .summary-check-image {
@@ -232,9 +232,10 @@
     }
 
     .summary-greeting-box {
-        left: unset;
-        top: 260px;
-        right: 20px;
+        position: unset;
+        flex-direction: row;
+        gap: 5px;
+        width: 380px;
     }
 
     .summary-greeting {
@@ -323,7 +324,7 @@
     }
 
     .summary-greeting-box {
-        top: 235px;
+      width: 280px;
     }
 }
 
