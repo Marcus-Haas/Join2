@@ -2,6 +2,7 @@ let prio = 0;
 let newSelectedColor;
 let selectedCategory = 0;
 let selectedAssign = 0;
+let assignColor;
 let departmentArray = [
     {
         department: 'Sales',
@@ -25,23 +26,15 @@ let departmentArray = [
     }
 ];
 
-let assignArray = [
-    {
-        assignName: 'Sidney Crosby',
-    },
-    {
-        assignName: 'Leon Draisaitl',
-    },
-    {
-        assignName: 'Joe Pavelski',
-    },
-];
+let assignArray = [];
 
 
 async function initAddTask() {
     await includeHTML();
     showActiveCategorieAddTask();
     loadTasksFromBackend();
+    loadAssignArray();
+    loadDepartmentArray();
 }
 
 
@@ -131,6 +124,7 @@ function createTask() {
         'status': 'todo',
         'prio': checkPrio(),
         'color': color,
+        'assignNumber': assignColor,
     }
     pushTasks(title, description, date, category, assign, task);
 }
@@ -350,6 +344,7 @@ function saveNewCategory() {
         document.getElementById('selected-category').innerHTML = newCategory;
         document.getElementById('selected-category-color').classList.add(newSelectedColor);
         unsetNewBorderOptions('category');
+        backend.setItem('departmentArray', JSON.stringify(departmentArray));
     }
 }
 
@@ -386,6 +381,7 @@ function selectNewAssign(i) {
     document.getElementById('assign-options').classList.add('d-none');
     document.getElementById('selected-assign').innerHTML = assignArray[i]['assignName'];
     selectedAssign = assignArray[i]['assignName'];
+    assignColor = assignArray[i]['assignNumber'];
 }
 
 
@@ -394,6 +390,7 @@ function selectCurrentUserForAssign() {
     document.getElementById('assign-options').classList.add('d-none');
     document.getElementById('selected-assign').innerHTML = activeUser[0];
     selectedAssign = activeUser[0];
+    assignColor = 1;
 }
 
 
@@ -418,9 +415,11 @@ function closeNewAssign() {
 function saveNewAssign() {
     let newAssign = document.getElementById('assign-inputfield').value;
     selectedAssign = newAssign;
+    assignColor = randomNumber();
     let newAssigment =
     {
         assignName: newAssign,
+        assignNumber: assignColor,
     }
     if (selectedAssign != 0) {
         assignArray.push(newAssigment);
@@ -428,5 +427,18 @@ function saveNewAssign() {
         document.getElementById('assign').classList.remove('d-none');
         document.getElementById('selected-assign').innerHTML = newAssign;
         unsetNewBorderOptions('assign');
+        backend.setItem('assignArray', JSON.stringify(assignArray));
     }
+}
+
+
+function loadAssignArray() {
+    let assignArrayAsJSON = backend.getItem('assignArray');
+    assignArray = JSON.parse(assignArrayAsJSON) || [];
+}
+
+
+function loadDepartmentArray() {
+    let departmentArrayAsJSON = backend.getItem('departmentArray');
+    departmentArray = JSON.parse(departmentArrayAsJSON) || departmentArray;
 }

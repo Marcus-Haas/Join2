@@ -8,6 +8,8 @@ async function initContacts() {
     showActiveCategorieContacts();
     renderAlphabet();
     renderAlphabetResponsive();
+    loadAssignArray();
+    loadDepartmentArray();
 }
 
 

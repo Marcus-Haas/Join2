@@ -34,6 +34,8 @@ async function initBoard() {
     showActiveCategorieBoard();
     loadTasksFromBackend();
     prepareRenderTasks();
+    loadAssignArray();
+    loadDepartmentArray();
 }
 
 
@@ -147,7 +149,7 @@ function openTaskDetailsPartTwo(i) {
     document.getElementById('overlay-description').value = allTasks[i]['description'];
     document.getElementById('overlay-date').value = allTasks[i]['date'];
     showActiveUrgencyAtTaskDetails(i);
-    setCircleInformationAtDetailsPartTwo(i);
+    checkUserColorAtDetailsPartTwo(i);
 }
 
 
@@ -174,6 +176,7 @@ function createFloatingTask() {
         'status': newStatusParameter,
         'prio': checkPrio(),
         'color': color,
+        'assignNumber': assignColor,
     }
     pushFloatingTasks(title, description, date, category, assign, task);
 }
@@ -242,14 +245,14 @@ function updateTheTask(i) {
     let newTitle = document.getElementById('overlay-title').value;
     let newDescription = document.getElementById('overlay-description').value;
     let newDate = document.getElementById('overlay-date').value;
-    let newAssign = document.getElementById('overlay-assign').value
-    let newInitials = newAssign.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
+    let newAssign = selectedAssign;
     allTasks[i]['title'] = newTitle;
     allTasks[i]['description'] = newDescription;
     allTasks[i]['date'] = newDate;
     allTasks[i]['assign'] = newAssign;
-    allTasks[i]['initials'] = newInitials;
+    allTasks[i]['initials'] = getInitials(newAssign);
     allTasks[i]['prio'] = checkPrio();
+    allTasks[i]['assignNumber'] = assignColor;
     pushTasksToBackend();
     closeTaskDetails();
     prepareRenderTasks();
@@ -337,71 +340,20 @@ function checkCategoryBackroundAtDetails(i) {
 }
 
 
-function generateBackgroundColor(background, i) {
-    if (allTasks[i]['category'] == 'Sales') {
-        background.classList.add('sales');
-    }
-    if (allTasks[i]['category'] == 'Marketing') {
-        background.classList.add('marketing');
-    }
-    if (allTasks[i]['category'] == 'Media') {
-        background.classList.add('media');
-    }
-    if (allTasks[i]['category'] == 'Backoffice') {
-        background.classList.add('backoffice');
-    }
-    if (allTasks[i]['category'] == 'Design') {
-        background.classList.add('design');
-    }
-}
-
-
 function checkUserColor(i) {
     let color = document.getElementById(`board-bottom-circle${i}`);
-    generateUserColor(color, i);
+    color.classList.add(`circle-color-${allTasks[i]['assignNumber']}`)
 }
 
 
 function checkUserColorAtDetails(i) {
     let color = document.getElementById('task-overlay-circle');
-    generateUserColor(color, i);
+    color.classList.add(`circle-color-${allTasks[i]['assignNumber']}`);
 }
 
 
-function generateUserColor(color, i) {
-    if (allTasks[i]['assign'] == 'Edna der Hund') {
-        color.classList.add('user1');
-    }
-    if (allTasks[i]['assign'] == 'Anke Fries') {
-        color.classList.add('user2');
-    }
-    if (allTasks[i]['assign'] == 'Marcus Haas') {
-        color.classList.add('user3');
-    }
-    if (allTasks[i]['assign'] == 'Guest') {
-        color.classList.add('user-guest');
-    }
-}
-
-
-function setCircleInformationAtDetailsPartTwo(i) {
-    let circle = document.getElementById('part-two-circle');
-    if (allTasks[i]['assign'] == 'Edna der Hund') {
-        circle.classList.add('user1');
-        circle.innerHTML = allTasks[i]['initials'];
-    }
-    if (allTasks[i]['assign'] == 'Anke Fries') {
-        circle.classList.add('user2');
-        circle.innerHTML = allTasks[i]['initials'];
-    }
-    if (allTasks[i]['assign'] == 'Marcus Haas') {
-        circle.classList.add('user3');
-        circle.innerHTML = allTasks[i]['initials'];
-    }
-    if (allTasks[i]['assign'] == 'Guest') {
-        circle.classList.add('user-guest');
-        circle.innerHTML = allTasks[i]['initials'];
-    }
+function checkUserColorAtDetailsPartTwo(i) {
+    document.getElementById('part-two-circle').classList.add(`circle-color-${allTasks[i]['assignNumber']}`);
 }
 
 
@@ -419,9 +371,4 @@ function showActiveCategorieBoard() {
 
 function moveToAddTask() {
     window.location.href = 'add-task.html';
-}
-
-
-function getCurrentUserBoard() {
-    document.getElementById('option').innerHTML = activeUser[0];
 }

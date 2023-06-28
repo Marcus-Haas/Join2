@@ -84,6 +84,7 @@ function createTaskResponsive() {
         'status': 'todo',
         'prio': checkPrioResponsive(),
         'color': color,
+        'assignNumber': assignColor,
     }
     pushTasksResponsive(title, description, date, category, assign, task);
 }
@@ -245,6 +246,7 @@ function saveNewCategoryResponsive() {
     document.getElementById('selected-category-rs').innerHTML = newCategory;
     document.getElementById('selected-category-color-rs').classList.add(newSelectedColor);
     unsetNewBorderOptionsResponsive('category');
+    backend.setItem('departmentArray', JSON.stringify(departmentArray));
 }
 
 
@@ -294,6 +296,7 @@ function selectNewAssignResponsive(i) {
     document.getElementById('assign-options-rs').classList.add('d-none');
     document.getElementById('selected-assign-rs').innerHTML = assignArray[i]['assignName'];
     selectedAssign = assignArray[i]['assignName'];
+    assignColor = assignArray[i]['assignNumber'];
 }
 
 
@@ -302,6 +305,7 @@ function selectCurrentUserForAssignResponsive() {
     document.getElementById('assign-options-rs').classList.add('d-none');
     document.getElementById('selected-assign-rs').innerHTML = activeUser[0];
     selectedAssign = activeUser[0];
+    assignColor = 1;
 }
 
 
@@ -326,9 +330,11 @@ function closeNewAssignResponsive() {
 function saveNewAssignResponsive() {
     let newAssign = document.getElementById('assign-inputfield-rs').value;
     selectedAssign = newAssign;
+    assignColor = randomNumber();
     let newAssigment =
     {
         assignName: newAssign,
+        assignNumber: assignColor,
     }
     if (selectedAssign != 0) {
         assignArray.push(newAssigment);
@@ -336,5 +342,6 @@ function saveNewAssignResponsive() {
         document.getElementById('assign-rs').classList.remove('d-none');
         document.getElementById('selected-assign-rs').innerHTML = newAssign;
         unsetNewBorderOptionsResponsive('assign');
+        backend.setItem('assignArray', JSON.stringify(assignArray));
     }
 }

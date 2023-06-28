@@ -222,16 +222,31 @@ function generateTaskDetailsHTMLPartTwo(i) {
         </div>
         <div class="task-overlay-edit-div">
             <span class="task-overlay-text">Assigned to</span>
-            <select class="task-overlay-input-title" name="" id="overlay-assign">
-                <option selected disabled hidden>Select contacts to assign</option>
-                <option>Marcus Haas</option>
-                <option>Anke Fries</option>
-                <option>Edna der Hund</option>
-                <option id="option"></option>
-            </select>
+            <div>
+                            <div class="add-task-category-assign" id="assign">
+                                <div class="add-task-category-assign-details" id="assign-onclick" onclick="openAssignOptions()">
+                                    <span class="selected-assign" id="selected-assign">Select contacts to assign</span>
+                                    <img src="assets/img/select-arrow.png">
+                                </div>
+                            </div>
+                            <span class="add-task-warning-text d-none" id="required-assign">Please select a
+                                contact</span>
+                            <div class="category-assign-input-div d-none" id="assign-input">
+                                <input class="category-assign-inputfield" placeholder="New contact name"
+                                    id="assign-inputfield">
+                                <div class="category-assign-input-rightside">
+                                    <img class="category-assign-input-image" src="assets/img/category-x.png"
+                                        onclick="closeNewAssign()">
+                                    <div class="category-assign-input-vector"></div>
+                                    <img class="category-assign-input-image" src="assets/img/category-check.png"
+                                        onclick="saveNewAssign()">
+                                </div>
+                            </div>
+                            <div class="add-task-category-assign-options d-none" id="assign-options"></div>
+                        </div>
         </div>
         <div class="task-overlay-edit-circlebox">
-            <div class="task-overlay-circle" id="part-two-circle">AF</div>
+            <div class="task-overlay-circle" id="part-two-circle">${allTasks[i]['initials']}</div>
         </div>
         <div class="task-overlay-ok-btn-mother">
             <div class="task-overlay-ok-btn" onclick="updateTheTask(${i})">
