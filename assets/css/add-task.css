@@ -397,3 +397,7 @@ body {
 .kanban-add-task {
     display: none;
 }
+
+input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}

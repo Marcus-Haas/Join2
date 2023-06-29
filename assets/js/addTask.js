@@ -442,3 +442,9 @@ function loadDepartmentArray() {
     let departmentArrayAsJSON = backend.getItem('departmentArray');
     departmentArray = JSON.parse(departmentArrayAsJSON) || departmentArray;
 }
+
+
+function disablePastDates() {
+    let today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').setAttribute('min', today);
+}
