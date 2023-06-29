@@ -367,8 +367,7 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 40%;
-    left: 39%;
+    top: 400px;
 }
 
 .wrong-password {

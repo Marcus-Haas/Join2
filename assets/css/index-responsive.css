@@ -161,6 +161,10 @@
     .end-text {
         font-size: 20px;
     }
+
+    .signup-msg {
+        width: 230px;
+    }
 }
 
 @media(max-width: 330px) {
@@ -343,5 +347,15 @@
 
     .log-headline {
         font-size: 30px;
+    }
+
+    .signup-msg {
+        top: 350px;
+    }
+}
+
+@media(max-height: 700px) {
+    .signup-msg {
+        top: 300px;
     }
 }
