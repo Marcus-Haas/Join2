@@ -134,7 +134,7 @@ body {
 }
 
 .contacts-headline {
-    font-size: 50px;
+    font-size: 60px;
     font-weight: 700;
 }
 
@@ -178,7 +178,7 @@ body {
     height: 400px;
     width: 450px;
     position: absolute;
-    top: 250px;
+    top: 230px;
     left: 700px;
 }
 
