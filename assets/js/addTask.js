@@ -307,7 +307,7 @@ function closeNewCategory() {
     document.getElementById('new-colors-option').classList.add('d-none');
     document.getElementById('category-options').classList.add('d-none');
     document.getElementById('selected-category').innerHTML = "Select task category";
-    document.getElementById('selected-category-color').classList.add('default');
+    unsetCategoryColor();
     unsetNewBorderOptions('category');
     document.getElementById('category').setAttribute('onclick', 'openCategoryOptions()');
 }
