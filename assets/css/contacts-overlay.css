@@ -4,8 +4,11 @@
     border-radius: 30px;
     z-index: 2;
     position: absolute;
-    top: 24%;
-    left: 24%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
     display: flex;
     transform: translateX(100vw);
     transition: all 225ms ease-in-out;

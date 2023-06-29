@@ -346,10 +346,12 @@
 
     .summary-headline-box {
         width: 280px;
+        padding-bottom: 20px;
     }
 
     .summary-headline {
         font-size: 30px;
+        margin-block-start: 0.4em;
     }
 
     .summary-text {
@@ -361,6 +363,7 @@
     .summary-overview-box {
         width: 280px;
         height: 310px;
+        margin-top: 15px;
     }
 
     .summary-tasks-squares {
