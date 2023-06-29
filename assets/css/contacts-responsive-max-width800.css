@@ -321,3 +321,9 @@
         gap: 15px;
     }
 }
+
+@media(max-height: 720px) {
+    .overlay-add-details-frame {
+        height: 290px;
+    }
+}
