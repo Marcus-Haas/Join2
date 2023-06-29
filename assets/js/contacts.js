@@ -196,7 +196,7 @@ function generateEditContact(i) {
                 <div class="overlay-input-fields">
                     <input class="overlay-input-style name-image" id="edit-name" type="text" placeholder="Name" required>
                     <input class="overlay-input-style email-image" id="edit-email" type="email" placeholder="Email" required>
-                    <input class="overlay-input-style phone-image" id="edit-phone" type="tel" placeholder="Phone" required>
+                    <input class="overlay-input-style phone-image" id="edit-phone" type="number" placeholder="Phone" required>
                 </div>
                 <div class="overlay-edit-btn">
                     <button class="overlay-edit-save-btn" onclick="updateContact(${i})">Save</button>

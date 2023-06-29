@@ -37,7 +37,7 @@ body {
 
 .contactbook-main::-webkit-scrollbar {
     display: none;
-} 
+}
 
 .contactbook-frame {
     height: 75px;
@@ -69,30 +69,39 @@ body {
 .circle-color-0 {
     background: orange !important;
 }
+
 .circle-color-1 {
     background: #00a1ff !important;
 }
+
 .circle-color-2 {
     background: #a900ff !important;
 }
+
 .circle-color-3 {
     background: #ff000c !important;
 }
+
 .circle-color-4 {
     background: #4da33e !important;
 }
+
 .circle-color-5 {
     background: #3ea39e !important;
 }
+
 .circle-color-6 {
     background: darkgoldenrod !important;
 }
+
 .circle-color-7 {
     background: darksalmon !important;
 }
+
 .circle-color-8 {
     background: limegreen !important;
 }
+
 .circle-color-9 {
     background: deeppink !important;
 }
@@ -306,4 +315,10 @@ body {
 .alphabet-vector {
     border: 1px solid #D1D1D1;
     width: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
