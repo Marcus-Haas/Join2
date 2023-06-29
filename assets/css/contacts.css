@@ -256,6 +256,7 @@ body {
 
 .contact-information-email {
     color: #007CEE;
+    text-decoration: none;
 }
 
 .delete-contact {

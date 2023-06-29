@@ -163,7 +163,7 @@ function generateBusinessCard(i) {
         </div>
         <div class="contact-information-details">
             <span><b>Email</b></span>
-            <span class="contact-information-email">${contacts[i]['email']}</span>
+            <a href="mailto:${contacts[i]['email']}" class="contact-information-email">${contacts[i]['email']}</a>
             <span><b>Phone</b></span>
             <span>${contacts[i]['phone']}</span>
             <div class="delete-contact" id="delete" title="delete" onclick="deleteContact(${i})"></div>
