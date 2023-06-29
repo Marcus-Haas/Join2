@@ -144,7 +144,7 @@ function pushTasks(title, description, date, category, assign, task) {
 
 function getInitials(assign) {
     if (assign) {
-        let initials = assign.match(/(\b\S)?/g).join("").match(/(^\S|\S$)?/g).join("").toUpperCase();
+        let initials = assign.match(/(^\S\S?|\s\S)?/g).map(v=>v.trim()).join("").match(/(^\S|\S$)?/g).join("").toLocaleUpperCase()
         return initials;
     }
 }
