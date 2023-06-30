@@ -131,8 +131,8 @@ function generateMiniTaskHTML(i) {
             <span class="board-details-description">${allTasks[i]['description']}</span>
         </div>
         <div class="board-bottom-frame">
-            <div class="board-bottom-ciclebox">
-                <div class="board-bottom-circle" id="board-bottom-circle${i}">${allTasks[i]['initials']}</div>
+            <div class="board-bottom-ciclebox" id="circlebox${i}">
+                <!--<div class="board-bottom-circle" id="board-bottom-circle${i}">${allTasks[i]['initials']}</div>-->
                 <!---<div class="board-bottom-circle-2">MH</div>--->
             </div>
             <div>
@@ -149,7 +149,7 @@ function generateTaskDetailsHTML(i) {
      <div class="frame-for-task-overlay">
         <div class="close-task-overlay" >
             <span class="closing" onclick="closeTaskDetails()">X</span>
-            <img class="board-closing-rs" src="/assets/img/arrow-left-black.svg" onclick="closeTaskDetails()">
+            <img class="board-closing-rs" src="assets/img/arrow-left-black.svg" onclick="closeTaskDetails()">
         </div>
         <div class="task-overlay-category" id="task-overlay-category">${allTasks[i]['category']}</div>
         <span class="task-overlay-title">${allTasks[i]['title']}</span>
@@ -166,10 +166,7 @@ function generateTaskDetailsHTML(i) {
             </div>
         </div>
         <span class="task-overlay-bold-text">Assigned To:</span>
-        <div class="task-overlay-gap">
-            <div class="task-overlay-circle" id="task-overlay-circle">${allTasks[i]['initials']}</div>
-            <span class="task-overlay-text">${allTasks[i]['assign']}</span>
-        </div>
+        <div class="task-overlay-assigned-users" id="assigned-users-${i}"></div>
         <div class="task-overlay-btns">
             <div class="task-overlay-delete" onclick="deleteTask(${i})"></div>
             <div class="task-overlay-edit" onclick="openTaskDetailsPartTwo(${i})">
@@ -403,5 +400,26 @@ function generateEmptyProgressText() {
 function generateEmptyDoneText() {
     return /*html*/ `
         <div class="board-empty-task">No tasks are done</div>
+    `;
+}
+
+
+function generateUserAssignCirclesHTML(i, j) {
+    return /*html*/`
+        <div class="board-bottom-circle circle-color-${allTasks[i]['assignNumber'][j]}" id="board-bottom-circle${j}">
+            ${allTasks[i]['initials'][j]}
+        </div>
+    `;
+}
+
+
+function generateCirclesForDetailsHTML(i, j) {
+    return /*html*/`
+        <div class="task-overlay-users">
+            <div class="task-overlay-circle circle-color-${allTasks[i]['assignNumber'][j]}" id="task-overlay-circle">
+                ${allTasks[i]['initials'][j]}
+            </div>
+            <span class="task-overlay-text">${allTasks[i]['assign'][j]}</span>
+        </div>
     `;
 }

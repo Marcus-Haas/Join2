@@ -77,7 +77,15 @@ function generateTask(status, i) {
     status.innerHTML += generateMiniTaskHTML(i);
     checkPriorityAtAllTasks(i);
     checkCategoryBackroundColor(i);
-    checkUserColor(i);
+    checkUserAssign(i);
+}
+
+
+function checkUserAssign(i) {
+    let circles = document.getElementById(`circlebox${i}`);
+    for (let j = 0; j < allTasks[i]['assign'].length; j++) {
+        circles.innerHTML += generateUserAssignCirclesHTML(i, j);
+    }
 }
 
 
@@ -139,7 +147,15 @@ function openTaskDetails(i) {
     document.getElementById('dark-body').innerHTML = generateTaskDetailsHTML(i);
     checkUrgencyAtTaskDetails(i);
     checkCategoryBackroundAtDetails(i);
-    checkUserColorAtDetails(i);
+    checkUserAssignAtDetails(i);
+}
+
+
+function checkUserAssignAtDetails(i) {
+    let circles = document.getElementById(`assigned-users-${i}`);
+    for (let j = 0; j < allTasks[i]['assign'].length; j++) {
+        circles.innerHTML += generateCirclesForDetailsHTML(i, j);
+    }
 }
 
 
@@ -278,7 +294,7 @@ function searchTasks() {
             prepareRenderAfterSearch(i);
             checkPriorityAtAllTasks(i);
             checkCategoryBackroundColor(i);
-            checkUserColor(i);
+            checkUserAssign(i);
         }
     }
 }
@@ -337,12 +353,6 @@ function checkCategoryBackroundColor(i) {
 function checkCategoryBackroundAtDetails(i) {
     let background = document.getElementById('task-overlay-category');
     background.classList.add(`${allTasks[i]['color']}`);
-}
-
-
-function checkUserColor(i) {
-    let color = document.getElementById(`board-bottom-circle${i}`);
-    color.classList.add(`circle-color-${allTasks[i]['assignNumber']}`)
 }
 
 

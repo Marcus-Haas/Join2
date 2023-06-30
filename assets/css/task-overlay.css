@@ -87,6 +87,18 @@
     align-items: center;
 }
 
+.task-overlay-assigned-users {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.task-overlay-users {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 .task-overlay-btns {
     width: 100px;
     height: 50px;

@@ -177,10 +177,11 @@ function generateOptionsHTMLResponsive(i) {
 function chooseCategoryResponsive(i) {
     unsetCategoryColorResponsive();
     unsetNewBorderOptionsResponsive('category');
+    document.getElementById('category-rs').setAttribute('onclick', 'openCategoryOptionsResponsive()');
     document.getElementById('category-options-rs').classList.add('d-none');
     document.getElementById('selected-category-rs').innerHTML = departmentArray[i]['department'];
     document.getElementById('selected-category-color-rs').classList.add(departmentArray[i]['departmentColor']);
-    document.getElementById('selected-category-color-rs').classList.remove('default');
+    //document.getElementById('selected-category-color-rs').classList.remove('default');
     selectedCategory = departmentArray[i]['department'];
     newSelectedColor = departmentArray[i]['departmentColor']; 
 }
@@ -210,7 +211,8 @@ function closeNewCategoryResponsive() {
     document.getElementById('new-colors-option-rs').classList.add('d-none');
     document.getElementById('category-options-rs').classList.add('d-none');
     document.getElementById('selected-category-rs').innerHTML = "Select task category";
-    document.getElementById('selected-category-color-rs').classList.add('default');
+   //document.getElementById('selected-category-color-rs').classList.add('default');
+    unsetCategoryColorResponsive();
     unsetNewBorderOptionsResponsive('category');
     document.getElementById('category-rs').setAttribute('onclick', 'openCategoryOptionsResponsive()');
 }
@@ -293,15 +295,18 @@ function generateAssignOptionsHTMLResponsive(i) {
 
 function selectNewAssignResponsive(i) {
     unsetNewBorderOptionsResponsive('assign');
+    document.getElementById('assign-onclick-rs').setAttribute('onclick', 'openAssignOptionsResponsive()');
     document.getElementById('assign-options-rs').classList.add('d-none');
     document.getElementById('selected-assign-rs').innerHTML = assignArray[i]['assignName'];
     selectedAssign = assignArray[i]['assignName'];
     assignColor = assignArray[i]['assignNumber'];
+    unsetNewBorderOptionsResponsive('assign');
 }
 
 
 function selectCurrentUserForAssignResponsive() {
-    unsetNewBorderOptions('assign');
+    unsetNewBorderOptionsResponsive('assign');
+    document.getElementById('assign-onclick-rs').setAttribute('onclick', 'openAssignOptionsResponsive()');
     document.getElementById('assign-options-rs').classList.add('d-none');
     document.getElementById('selected-assign-rs').innerHTML = activeUser[0];
     selectedAssign = activeUser[0];
