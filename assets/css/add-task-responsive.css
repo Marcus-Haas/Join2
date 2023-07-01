@@ -120,6 +120,10 @@
     .category-colors-div {
         gap: 20px;
     }
+
+    .add-task-vector {
+        height: 470px;
+    }
 }
 
 @media(max-width: 800px) {
@@ -252,11 +256,15 @@
     }
 }
 
-@media(max-height:800px) {
+@media(max-height: 900px) {
     .add-task-leftside {
         height: 450px;
         justify-content: unset;
-        gap: 20px;
+        gap: 10px;
+    }
+
+    .add-task-headline {
+        font-size: 45px;
     }
 
     .add-task-vector {

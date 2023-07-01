@@ -76,6 +76,7 @@ function generateFloatingTaskHTML() {
                                 </div>
                             </div>
                             <div class="add-task-category-assign-options d-none" id="assign-options"></div>
+                            <div class="assign-circle-div" id="assign-circle"></div>
                         </div>
                 </div>
             </div>
@@ -240,10 +241,8 @@ function generateTaskDetailsHTMLPartTwo(i) {
                                 </div>
                             </div>
                             <div class="add-task-category-assign-options d-none" id="assign-options"></div>
+                            <div class="assign-circle-div" id="assign-circle"></div>
                         </div>
-        </div>
-        <div class="task-overlay-edit-circlebox">
-            <div class="task-overlay-circle" id="part-two-circle">${allTasks[i]['initials']}</div>
         </div>
         <div class="task-overlay-ok-btn-mother">
             <div class="task-overlay-ok-btn" onclick="updateTheTask(${i})">
@@ -334,6 +333,7 @@ function generateFloatingTaskHTMLAtContacts() {
                                 </div>
                             </div>
                             <div class="add-task-category-assign-options d-none" id="assign-options"></div>
+                            <div class="assign-circle-div" id="assign-circle"></div>
                         </div>
                 </div>
             </div>

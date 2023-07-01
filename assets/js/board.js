@@ -165,7 +165,8 @@ function openTaskDetailsPartTwo(i) {
     document.getElementById('overlay-description').value = allTasks[i]['description'];
     document.getElementById('overlay-date').value = allTasks[i]['date'];
     showActiveUrgencyAtTaskDetails(i);
-    checkUserColorAtDetailsPartTwo(i);
+    loadAssignUserCirclesAtDetailsPartTwo(i);
+    //checkUserColorAtDetailsPartTwo(i);
 }
 
 
@@ -183,16 +184,16 @@ function createFloatingTask() {
     let assign = selectedAssign;
     let color = newSelectedColor;
     let task = {
-        'initials': getInitials(assign),
+        'initials': assignInitialsArray,
         'title': title,
         'description': description,
         'date': date,
         'category': category,
-        'assign': assign,
+        'assign': assignNameArray,
         'status': newStatusParameter,
         'prio': checkPrio(),
         'color': color,
-        'assignNumber': assignColor,
+        'assignNumber': assignColorArray,
     }
     pushFloatingTasks(title, description, date, category, assign, task);
 }
@@ -261,14 +262,13 @@ function updateTheTask(i) {
     let newTitle = document.getElementById('overlay-title').value;
     let newDescription = document.getElementById('overlay-description').value;
     let newDate = document.getElementById('overlay-date').value;
-    let newAssign = selectedAssign;
     allTasks[i]['title'] = newTitle;
     allTasks[i]['description'] = newDescription;
     allTasks[i]['date'] = newDate;
-    allTasks[i]['assign'] = newAssign;
-    allTasks[i]['initials'] = getInitials(newAssign);
+    allTasks[i]['assign'] = assignNameArray;
+    allTasks[i]['initials'] = assignInitialsArray;
     allTasks[i]['prio'] = checkPrio();
-    allTasks[i]['assignNumber'] = assignColor;
+    allTasks[i]['assignNumber'] = assignColorArray;
     pushTasksToBackend();
     closeTaskDetails();
     prepareRenderTasks();
@@ -381,4 +381,15 @@ function showActiveCategorieBoard() {
 
 function moveToAddTask() {
     window.location.href = 'add-task.html';
+}
+
+
+function loadAssignUserCirclesAtDetailsPartTwo(i) {
+    assignNameArray = allTasks[i]['assign'];
+    assignColorArray = allTasks[i]['assignNumber'];
+    assignInitialsArray = allTasks[i]['initials'];
+    let assignCircle = document.getElementById('assign-circle');
+    for (let i = 0; i < assignNameArray.length; i++) {
+        assignCircle.innerHTML += generateAssignCircleHTML(i);
+    }
 }

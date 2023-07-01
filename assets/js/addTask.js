@@ -3,9 +3,9 @@ let newSelectedColor;
 let selectedCategory = 0;
 let selectedAssign = 0;
 let assignColor;
-let testArrayName = [];
-let testArrayColor = [];
-let testArrayInitials = [];
+let assignNameArray = [];
+let assignColorArray = [];
+let assignInitialsArray = [];
 let departmentArray = [
     {
         department: 'Sales',
@@ -118,16 +118,16 @@ function createTask() {
     let assign = selectedAssign;
     let color = newSelectedColor;
     let task = {
-        'initials': testArrayInitials,
+        'initials': assignInitialsArray,
         'title': title,
         'description': description,
         'date': date,
         'category': category,
-        'assign': testArrayName,
+        'assign': assignNameArray,
         'status': 'todo',
         'prio': checkPrio(),
         'color': color,
-        'assignNumber': testArrayColor,
+        'assignNumber': assignColorArray,
     }
     pushTasks(title, description, date, category, assign, task);
 }
@@ -441,12 +441,12 @@ function saveNewAssign() {
 
 
 function setAssignCircle() {
-    testArrayName.push(selectedAssign);
-    testArrayColor.push(assignColor);
-    testArrayInitials.push(getInitials(selectedAssign));
+    assignNameArray.push(selectedAssign);
+    assignColorArray.push(assignColor);
+    assignInitialsArray.push(getInitials(selectedAssign));
     let assignCircle = document.getElementById('assign-circle');
     assignCircle.innerHTML = "";
-    for (let i = 0; i < testArrayName.length; i++) {
+    for (let i = 0; i < assignNameArray.length; i++) {
         assignCircle.innerHTML += generateAssignCircleHTML(i);
     }
 }
@@ -454,19 +454,19 @@ function setAssignCircle() {
 
 function generateAssignCircleHTML(i) {
     return /*html*/`
-        <div class="assign-circle circle-color-${testArrayColor[i]}" onclick="deleteAssignCircle(${i})" title="delete">
-        ${testArrayInitials[i]}</div>
+        <div class="assign-circle circle-color-${assignColorArray[i]}" onclick="deleteAssignCircle(${i})" title="delete">
+        ${assignInitialsArray[i]}</div>
     `;
 }
 
 
 function deleteAssignCircle(number) {
-    testArrayName.splice(number, 1);
-    testArrayColor.splice(number, 1);
-    testArrayInitials.splice(number, 1);
+    assignNameArray.splice(number, 1);
+    assignColorArray.splice(number, 1);
+    assignInitialsArray.splice(number, 1);
     document.getElementById('selected-assign').innerHTML = "Select contacts to assign";
     document.getElementById('assign-circle').innerHTML = "";
-    for (let i = 0; i < testArrayName.length; i++) {
+    for (let i = 0; i < assignNameArray.length; i++) {
         document.getElementById('assign-circle').innerHTML += generateAssignCircleHTML(i);
     }
 }

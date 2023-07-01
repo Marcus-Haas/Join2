@@ -75,16 +75,16 @@ function createTaskResponsive() {
     let assign = selectedAssign;
     let color = newSelectedColor
     let task = {
-        'initials': getInitials(assign),
+        'initials': assignInitialsArray,
         'title': title,
         'description': description,
         'date': date,
         'category': category,
-        'assign': assign,
+        'assign': assignNameArray,
         'status': 'todo',
         'prio': checkPrioResponsive(),
         'color': color,
-        'assignNumber': assignColor,
+        'assignNumber': assignInitialsArray,
     }
     pushTasksResponsive(title, description, date, category, assign, task);
 }
@@ -300,7 +300,7 @@ function selectNewAssignResponsive(i) {
     document.getElementById('selected-assign-rs').innerHTML = assignArray[i]['assignName'];
     selectedAssign = assignArray[i]['assignName'];
     assignColor = assignArray[i]['assignNumber'];
-    unsetNewBorderOptionsResponsive('assign');
+    setAssignCircleResponsive();
 }
 
 
@@ -311,6 +311,7 @@ function selectCurrentUserForAssignResponsive() {
     document.getElementById('selected-assign-rs').innerHTML = activeUser[0];
     selectedAssign = activeUser[0];
     assignColor = 1;
+    setAssignCircleResponsive();
 }
 
 
@@ -355,4 +356,36 @@ function saveNewAssignResponsive() {
 function disablePastDatesResponsive() {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById('date-rs').setAttribute('min', today);
+}
+
+
+function setAssignCircleResponsive() {
+    assignNameArray.push(selectedAssign);
+    assignColorArray.push(assignColor);
+    assignInitialsArray.push(getInitials(selectedAssign));
+    let assignCircle = document.getElementById('assign-circle-rs');
+    assignCircle.innerHTML = "";
+    for (let i = 0; i < assignNameArray.length; i++) {
+        assignCircle.innerHTML += generateAssignCircleHTMLResponsive(i);
+    }
+}
+
+
+function generateAssignCircleHTMLResponsive(i) {
+    return /*html*/`
+        <div class="assign-circle circle-color-${assignColorArray[i]}" onclick="deleteAssignCircleResponsive(${i})" title="delete">
+        ${assignInitialsArray[i]}</div>
+    `;
+}
+
+
+function deleteAssignCircleResponsive(number) {
+    assignNameArray.splice(number, 1);
+    assignColorArray.splice(number, 1);
+    assignInitialsArray.splice(number, 1);
+    document.getElementById('selected-assign-rs').innerHTML = "Select contacts to assign";
+    document.getElementById('assign-circle-rs').innerHTML = "";
+    for (let i = 0; i < assignNameArray.length; i++) {
+        document.getElementById('assign-circle-rs').innerHTML += generateAssignCircleHTMLResponsive(i);
+    }
 }

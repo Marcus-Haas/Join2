@@ -30,12 +30,14 @@
 
 @media(max-width: 1200px) {
     .floating-addTask {
-        width: 900px;
+        width: 700px;
         height: 750px;
+        align-items: unset;
     }
 
     .close-floating-task {
         position: unset;
+        margin-top: 10px;
     }
 
     .add-task-btns {
@@ -68,9 +70,6 @@
 }
 
 @media(max-width: 1000px) {
-    .floating-addTask {
-        width: 750px;
-    }
 
     .helper {
         justify-content: center;
@@ -102,6 +101,13 @@
     }
 }
 
+@media(max-width: 950px) {
+    .floating-addTask {
+        width: 600px;
+        height: 660px;
+    }
+}
+
 @media (max-width: 800px) {
     .floating-addTask {
         display: none;
@@ -110,7 +116,8 @@
 
 @media(max-height: 900px) {
     .floating-addTask {
-        height: 630px;
+        height: 680px;
+        align-items: unset;
     }
 
     .helper {
@@ -119,7 +126,6 @@
 
     .add-task-leftside {
         height: 460px;
-        overflow: auto;
     }
 
     .add-task-vector {
