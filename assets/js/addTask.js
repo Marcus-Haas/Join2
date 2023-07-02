@@ -3,6 +3,7 @@ let newSelectedColor;
 let selectedCategory = 0;
 let selectedAssign = 0;
 let assignColor;
+let existingAssign;
 let assignNameArray = [];
 let assignColorArray = [];
 let assignInitialsArray = [];
@@ -441,13 +442,26 @@ function saveNewAssign() {
 
 
 function setAssignCircle() {
-    assignNameArray.push(selectedAssign);
-    assignColorArray.push(assignColor);
-    assignInitialsArray.push(getInitials(selectedAssign));
-    let assignCircle = document.getElementById('assign-circle');
-    assignCircle.innerHTML = "";
+    checkForExistingAssign();
+    if (existingAssign == false) {
+        assignNameArray.push(selectedAssign);
+        assignColorArray.push(assignColor);
+        assignInitialsArray.push(getInitials(selectedAssign));
+        let assignCircle = document.getElementById('assign-circle');
+        assignCircle.innerHTML = "";
+        for (let i = 0; i < assignNameArray.length; i++) {
+            assignCircle.innerHTML += generateAssignCircleHTML(i);
+        }
+    }
+}
+
+
+function checkForExistingAssign() {
+    existingAssign = false;
     for (let i = 0; i < assignNameArray.length; i++) {
-        assignCircle.innerHTML += generateAssignCircleHTML(i);
+        if (selectedAssign == assignNameArray[i]) {
+            existingAssign = true;
+        }
     }
 }
 
@@ -484,9 +498,9 @@ function loadDepartmentArray() {
 }
 
 
-function disablePastDates() {
+function disablePastDates(id) {
     let today = new Date().toISOString().split('T')[0];
-    document.getElementById('date').setAttribute('min', today);
+    document.getElementById(`${id}`).setAttribute('min', today);
 }
 
 

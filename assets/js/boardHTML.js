@@ -86,7 +86,7 @@ function generateFloatingTaskHTML() {
             <div class="add-task-rightside">
                 <div class="add-task-titlebox">
                     <span class="add-task-text">Due date</span>
-                    <input class="add-task-input-style" id="date" type="date" onclick="disablePastDates()">
+                    <input class="add-task-input-style" id="date" type="date" onclick="disablePastDates('date')">
                     <span class="add-task-warning-text d-none" id="required-date">This field is required</span>
                 </div>
                 <div class="add-task-titlebox">
@@ -208,7 +208,7 @@ function generateTaskDetailsHTMLPartTwo(i) {
         </div>
         <div class="task-overlay-edit-div">
             <span class="task-overlay-text">Due date</span>
-            <input class="task-overlay-input-title" type="date" name="" id="overlay-date">
+            <input class="task-overlay-input-title" type="date" name="" id="overlay-date" onclick="disablePastDates('overlay-date')">
         </div>
         <div class="task-overlay-edit-div">
             <span class="task-overlay-text">Prio</span>
@@ -350,7 +350,7 @@ function generateFloatingTaskHTMLAtContacts() {
             <div class="add-task-rightside">
                 <div class="add-task-titlebox">
                     <span class="add-task-text">Due date</span>
-                    <input class="add-task-input-style" id="date" type="date" onclick="disablePastDates()">
+                    <input class="add-task-input-style" id="date" type="date" onclick="disablePastDates('date')">
                     <span class="add-task-warning-text d-none" id="required-date">This field is required</span>
                 </div>
                 <div class="add-task-titlebox">

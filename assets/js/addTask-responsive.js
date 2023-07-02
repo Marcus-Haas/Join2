@@ -359,13 +359,16 @@ function disablePastDatesResponsive() {
 
 
 function setAssignCircleResponsive() {
-    assignNameArray.push(selectedAssign);
-    assignColorArray.push(assignColor);
-    assignInitialsArray.push(getInitials(selectedAssign));
-    let assignCircle = document.getElementById('assign-circle-rs');
-    assignCircle.innerHTML = "";
-    for (let i = 0; i < assignNameArray.length; i++) {
-        assignCircle.innerHTML += generateAssignCircleHTMLResponsive(i);
+    checkForExistingAssign();
+    if (existingAssign == false) {
+        assignNameArray.push(selectedAssign);
+        assignColorArray.push(assignColor);
+        assignInitialsArray.push(getInitials(selectedAssign));
+        let assignCircle = document.getElementById('assign-circle-rs');
+        assignCircle.innerHTML = "";
+        for (let i = 0; i < assignNameArray.length; i++) {
+            assignCircle.innerHTML += generateAssignCircleHTMLResponsive(i);
+        }
     }
 }
 
