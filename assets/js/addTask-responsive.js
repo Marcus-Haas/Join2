@@ -100,6 +100,7 @@ function pushTasksResponsive(title, description, date, category, assign, task) {
         showAddedTaskMessage();
         moveToBoard();
         pushTasksToBackend();
+        cleanHelpArrays();
     }
 }
 
@@ -181,9 +182,8 @@ function chooseCategoryResponsive(i) {
     document.getElementById('category-options-rs').classList.add('d-none');
     document.getElementById('selected-category-rs').innerHTML = departmentArray[i]['department'];
     document.getElementById('selected-category-color-rs').classList.add(departmentArray[i]['departmentColor']);
-    //document.getElementById('selected-category-color-rs').classList.remove('default');
     selectedCategory = departmentArray[i]['department'];
-    newSelectedColor = departmentArray[i]['departmentColor']; 
+    newSelectedColor = departmentArray[i]['departmentColor'];
 }
 
 
@@ -211,7 +211,6 @@ function closeNewCategoryResponsive() {
     document.getElementById('new-colors-option-rs').classList.add('d-none');
     document.getElementById('category-options-rs').classList.add('d-none');
     document.getElementById('selected-category-rs').innerHTML = "Select task category";
-   //document.getElementById('selected-category-color-rs').classList.add('default');
     unsetCategoryColorResponsive();
     unsetNewBorderOptionsResponsive('category');
     document.getElementById('category-rs').setAttribute('onclick', 'openCategoryOptionsResponsive()');

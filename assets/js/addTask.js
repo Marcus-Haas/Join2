@@ -282,7 +282,6 @@ function chooseCategory(i) {
     document.getElementById('category-options').classList.add('d-none');
     document.getElementById('selected-category').innerHTML = departmentArray[i]['department'];
     document.getElementById('selected-category-color').classList.add(departmentArray[i]['departmentColor']);
-    //document.getElementById('selected-category-color').classList.remove('default');
     selectedCategory = departmentArray[i]['department'];
     newSelectedColor = departmentArray[i]['departmentColor'];
 }
@@ -494,5 +493,5 @@ function disablePastDates() {
 function cleanHelpArrays() {
     assignNameArray = [];
     assignColorArray = [];
-    assignInitialsArray =[];
+    assignInitialsArray = [];
 }
