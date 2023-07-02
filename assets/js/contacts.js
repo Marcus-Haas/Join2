@@ -322,4 +322,6 @@ function showFloatingAddTaskAtContacts() {
     document.getElementById('dark-body').classList.remove('d-none');
     document.getElementById('floating-addTask').classList.add('show-floating-addTask');
     document.getElementById('floating-addTask').innerHTML = generateFloatingTaskHTMLAtContacts();
+    selectedCategory = 0;
+    selectedAssign = 0;
 }

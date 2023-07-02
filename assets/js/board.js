@@ -133,6 +133,8 @@ function showFloatingAddTask(actualStatus) {
     document.getElementById('floating-addTask').classList.add('show-floating-addTask');
     document.getElementById('floating-addTask').innerHTML = generateFloatingTaskHTML();
     newStatusParameter = actualStatus;
+    selectedCategory = 0;
+    selectedAssign = 0;
 }
 
 
