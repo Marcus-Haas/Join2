@@ -208,6 +208,7 @@ function pushFloatingTasks(title, description, date, category, assign, task) {
         closeFloatingAddTask();
         prepareRenderTasks();
         showAddedTaskMessageBoard();
+        cleanHelpArrays();
     }
 }
 
@@ -272,6 +273,7 @@ function updateTheTask(i) {
     pushTasksToBackend();
     closeTaskDetails();
     prepareRenderTasks();
+    cleanHelpArrays();
 }
 
 
@@ -392,4 +394,44 @@ function loadAssignUserCirclesAtDetailsPartTwo(i) {
     for (let i = 0; i < assignNameArray.length; i++) {
         assignCircle.innerHTML += generateAssignCircleHTML(i);
     }
+}
+
+
+function openMoveTaskMobile(i) {
+    document.getElementById(`move-task-${i}`).setAttribute('onclick', `closeMoveTaskMobile(${i})`);
+    document.getElementById(`board-move-task-${i}`).classList.remove('d-none');
+}
+
+
+function closeMoveTaskMobile(i) {
+    document.getElementById(`move-task-${i}`).setAttribute('onclick', `openMoveTaskMobile(${i})`);
+    document.getElementById(`board-move-task-${i}`).classList.add('d-none');
+}
+
+
+function moveTaskToTodo(i) {
+    allTasks[i]['status'] = 'todo';
+    pushTasksToBackend();
+    prepareRenderTasks();
+}
+
+
+function moveTaskToProgress(i) {
+    allTasks[i]['status'] = 'progress';
+    pushTasksToBackend();
+    prepareRenderTasks();
+}
+
+
+function moveTaskToFeedback(i) {
+    allTasks[i]['status'] = 'feedback';
+    pushTasksToBackend();
+    prepareRenderTasks();
+}
+
+
+function moveTaskToDone(i) {
+    allTasks[i]['status'] = 'done';
+    pushTasksToBackend();
+    prepareRenderTasks();
 }

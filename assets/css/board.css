@@ -164,6 +164,7 @@ body {
     border-radius: 30px;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     gap: 10px;
+    position: relative;
 }
 
 .board-categorie {
@@ -294,4 +295,57 @@ body {
 
 .show-floating-addTask {
     transform: translateX(0);
+}
+
+.board-move-task {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2A3647;
+    width: 85px;
+    height: 20px;
+    font-size: 14px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: white;
+}
+
+.board-move-task:hover {
+    cursor: pointer;
+    background: #29ABE2;
+}
+
+.move-task-options-main {
+    width: 100px;
+    background: #2A3647;
+    height: fit-content;
+    position: absolute;
+    top: 35px;
+    right: 20px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.move-task-options {
+    color: #D1D1D1;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.move-task-options:hover {
+    background: #091931;
+    color: white;
+    cursor: pointer;
+}
+
+.move-task-box {
+    display: none;
 }

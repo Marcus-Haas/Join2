@@ -141,6 +141,7 @@ function pushTasks(title, description, date, category, assign, task) {
         showAddedTaskMessage();
         moveToBoard();
         pushTasksToBackend();
+        cleanHelpArrays();
     }
 }
 
@@ -487,4 +488,11 @@ function loadDepartmentArray() {
 function disablePastDates() {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById('date').setAttribute('min', today);
+}
+
+
+function cleanHelpArrays() {
+    assignNameArray = [];
+    assignColorArray = [];
+    assignInitialsArray =[];
 }

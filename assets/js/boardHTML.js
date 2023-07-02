@@ -140,6 +140,15 @@ function generateMiniTaskHTML(i) {
                 <img id="task-prio-img${i}" src="">
             </div>
         </div>
+        <div class="move-task-box" onclick="doNotClose(event)">
+            <div class="board-move-task" id="move-task-${i}" onclick="openMoveTaskMobile(${i})">Move Task</div>
+            <div class="move-task-options-main d-none" id="board-move-task-${i}">
+            <div class="move-task-options" onclick="moveTaskToTodo(${i})">To do</div>
+            <div class="move-task-options" onclick="moveTaskToProgress(${i})">In progress</div>
+            <div class="move-task-options" onclick="moveTaskToFeedback(${i})">Awaiting feedback</div>
+            <div class="move-task-options" onclick="moveTaskToDone(${i})">Done</div>
+            </div>
+        </div>
     </div>
     `;
 }
