@@ -83,9 +83,21 @@ function generateTask(status, i) {
 
 function checkUserAssign(i) {
     let circles = document.getElementById(`circlebox${i}`);
-    for (let j = 0; j < allTasks[i]['assign'].length; j++) {
+    if (allTasks[i]['assign'].length <= 3)
+        for (let j = 0; j < allTasks[i]['assign'].length; j++) {
+            circles.innerHTML += generateUserAssignCirclesHTML(i, j);
+        } else {
+            checkExtensionUserAssign(i);
+    }
+}
+
+
+function checkExtensionUserAssign(i) {
+    let circles = document.getElementById(`circlebox${i}`);
+    for (let j = 0; j <= 2; j++) {
         circles.innerHTML += generateUserAssignCirclesHTML(i, j);
     }
+    circles.innerHTML += generateExtensionCircleHTML(i);
 }
 
 
@@ -411,29 +423,8 @@ function closeMoveTaskMobile(i) {
 }
 
 
-function moveTaskToTodo(i) {
-    allTasks[i]['status'] = 'todo';
-    pushTasksToBackend();
-    prepareRenderTasks();
-}
-
-
-function moveTaskToProgress(i) {
-    allTasks[i]['status'] = 'progress';
-    pushTasksToBackend();
-    prepareRenderTasks();
-}
-
-
-function moveTaskToFeedback(i) {
-    allTasks[i]['status'] = 'feedback';
-    pushTasksToBackend();
-    prepareRenderTasks();
-}
-
-
-function moveTaskToDone(i) {
-    allTasks[i]['status'] = 'done';
+function moveTask(i, status) {
+    allTasks[i]['status'] = status;
     pushTasksToBackend();
     prepareRenderTasks();
 }
