@@ -87,7 +87,7 @@ function checkUserAssign(i) {
         for (let j = 0; j < allTasks[i]['assign'].length; j++) {
             circles.innerHTML += generateUserAssignCirclesHTML(i, j);
         } else {
-            checkExtensionUserAssign(i);
+        checkExtensionUserAssign(i);
     }
 }
 
@@ -180,7 +180,6 @@ function openTaskDetailsPartTwo(i) {
     document.getElementById('overlay-date').value = allTasks[i]['date'];
     showActiveUrgencyAtTaskDetails(i);
     loadAssignUserCirclesAtDetailsPartTwo(i);
-    //checkUserColorAtDetailsPartTwo(i);
 }
 
 
